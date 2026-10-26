@@ -62,7 +62,7 @@ private fun ChimeSettingsScreen() {
     Column(
         modifier =
             Modifier.fillMaxSize()
-                .background(Color(0xFF111111))
+                .background(Color(0xFF031716))
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp, vertical = 28.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -71,7 +71,7 @@ private fun ChimeSettingsScreen() {
       Text("Sounds", color = Color.White, fontSize = 30.sp, fontWeight = FontWeight.Bold)
       Text(
           "Gentle ambient cues. All off by default; nothing plays during quiet hours.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 15.sp,
           textAlign = TextAlign.Center,
       )
@@ -165,9 +165,9 @@ private fun VoicePicker(current: String, onPick: (String) -> Unit) {
                 .padding(start = 18.dp, end = 18.dp, top = 2.dp, bottom = 6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-      Text("Voice", color = Color(0xFFDDDDDD), fontSize = 15.sp, modifier = Modifier.weight(1f))
+      Text("Voice", color = Color(0xFFDCEBEC), fontSize = 15.sp, modifier = Modifier.weight(1f))
       Text(label, color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-      Text("  ▾", color = Color(0xFFDDDDDD), fontSize = 15.sp)
+      Text("  ▾", color = Color(0xFFDCEBEC), fontSize = 15.sp)
     }
     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
       voices.forEach { (name, friendly) ->

@@ -63,7 +63,7 @@ object ImmortalSettings {
       )
 
   data class Settings(
-      val weatherUnit: String = UNIT_AUTO,
+      val weatherUnit: String = UNIT_C,
       val tileSize: String = SIZE_STANDARD,
       val weatherWidget: String = WIDGET_OFF,
       val clockFormat: String = CLOCK_AUTO,
@@ -115,7 +115,7 @@ object ImmortalSettings {
   fun load(context: Context): Settings {
     val p = prefs(context)
     return Settings(
-        weatherUnit = p.getString("weather_unit", UNIT_AUTO) ?: UNIT_AUTO,
+        weatherUnit = p.getString("weather_unit", UNIT_C) ?: UNIT_C,
         tileSize = p.getString("tile_size", SIZE_STANDARD) ?: SIZE_STANDARD,
         weatherWidget = p.getString("weather_widget", WIDGET_OFF) ?: WIDGET_OFF,
         clockFormat = p.getString("clock_format", CLOCK_AUTO) ?: CLOCK_AUTO,

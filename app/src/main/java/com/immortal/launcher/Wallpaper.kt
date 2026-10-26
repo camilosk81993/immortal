@@ -203,7 +203,7 @@ fun HomeBackground(modifier: Modifier = Modifier) {
               Modifier.fillMaxSize()
                   .background(
                       Brush.verticalGradient(
-                          listOf(Color(0x40031716), Color(0x73031716), Color(0xB3031716)))))
+                          listOf(Color(0x80031716), Color(0x7A031716), Color(0xB8031716)))))
         } else {
           androidx.compose.foundation.layout.Box(Modifier.fillMaxSize().background(Color(0xFF031716)))
         }

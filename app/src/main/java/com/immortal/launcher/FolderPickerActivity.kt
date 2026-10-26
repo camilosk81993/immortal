@@ -137,7 +137,7 @@ private fun FolderPicker(onPick: (String) -> Unit, onCancel: () -> Unit) {
                   true
                 } else false
               }
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .padding(horizontal = 28.dp, vertical = 28.dp),
   ) {
     Text(
@@ -152,7 +152,7 @@ private fun FolderPicker(onPick: (String) -> Unit, onCancel: () -> Unit) {
     if (!granted) {
       Text(
           "Immortal needs permission to read your files. Tap to allow, then pick a folder.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 15.sp,
       )
       Spacer(Modifier.size(16.dp))
@@ -201,7 +201,7 @@ private fun FolderPicker(onPick: (String) -> Unit, onCancel: () -> Unit) {
     Spacer(Modifier.size(10.dp))
     Text(
         "Cancel",
-        color = Color(0xFF8AB4F8),
+        color = Color(0xFF6BA3BE),
         fontSize = 16.sp,
         modifier = Modifier.tvFocusable(RoundedCornerShape(8.dp)) { onCancel() }.padding(8.dp),
     )
@@ -224,7 +224,7 @@ private fun FolderRow(dir: File, onClick: () -> Unit) {
     IconBox("📁")
     Column(modifier = Modifier.weight(1f)) {
       Text(dir.name, color = Color.White, fontSize = 17.sp, maxLines = 1)
-      Text(summaryLine(summary), color = Color(0xFF8A8A8A), fontSize = 12.sp)
+      Text(summaryLine(summary), color = Color(0xFF8CA6AB), fontSize = 12.sp)
     }
     summary?.samples?.let { samples ->
       Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -243,7 +243,7 @@ private fun Thumb(item: MediaItem, sizeDp: Int = 44) {
   Box(
       contentAlignment = Alignment.Center,
       modifier =
-          Modifier.size(sizeDp.dp).clip(RoundedCornerShape(8.dp)).background(Color(0xFF2A2A2C)),
+          Modifier.size(sizeDp.dp).clip(RoundedCornerShape(8.dp)).background(Color(0xFF0A3B3D)),
   ) {
     bmp?.let {
       Image(
@@ -270,7 +270,7 @@ private fun CurrentFolderPreview(dir: File) {
   Column(modifier = Modifier.fillMaxWidth().padding(top = 20.dp)) {
     Text(
         "IN THIS FOLDER",
-        color = Color(0xFF7C7C7C),
+        color = Color(0xFF7F9A9F),
         fontSize = 13.sp,
         fontWeight = FontWeight.SemiBold,
         modifier = Modifier.padding(bottom = 12.dp),
@@ -300,7 +300,7 @@ private fun summaryLine(s: MediaSummary?, here: Boolean = false): String {
 private fun IconBox(icon: String) {
   Box(
       contentAlignment = Alignment.Center,
-      modifier = Modifier.size(40.dp).background(Color(0xFF2A2A2C), RoundedCornerShape(10.dp)),
+      modifier = Modifier.size(40.dp).background(Color(0xFF0A3B3D), RoundedCornerShape(10.dp)),
   ) {
     Text(icon, fontSize = 18.sp)
   }
@@ -309,7 +309,7 @@ private fun IconBox(icon: String) {
 @Composable
 private fun PrimaryButton(label: String, subtitle: String?, onClick: () -> Unit) {
   Surface(
-      color = Color(0xFF2E6BE6),
+      color = Color(0xFF0C969C),
       shape = RoundedCornerShape(14.dp),
       modifier =
           Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(14.dp), focusScale = 1f) {
@@ -340,7 +340,7 @@ private fun SimpleRow(icon: String, title: String, subtitle: String, onClick: ()
     Column {
       Text(title, color = Color.White, fontSize = 17.sp)
       if (subtitle.isNotBlank()) {
-        Text(subtitle, color = Color(0xFF8A8A8A), fontSize = 12.sp)
+        Text(subtitle, color = Color(0xFF8CA6AB), fontSize = 12.sp)
       }
     }
   }
@@ -350,7 +350,7 @@ private fun SimpleRow(icon: String, title: String, subtitle: String, onClick: ()
 private fun Hint(text: String) {
   Text(
       text,
-      color = Color(0xFF7C7C7C),
+      color = Color(0xFF7F9A9F),
       fontSize = 14.sp,
       modifier = Modifier.padding(vertical = 14.dp),
   )

@@ -94,14 +94,14 @@ private fun IntercomScreen() {
 
   Box(modifier = Modifier.fillMaxSize()) {
     Column(
-        modifier = Modifier.fillMaxSize().background(Color(0xFF111111))
+        modifier = Modifier.fillMaxSize().background(Color(0xFF031716))
             .verticalScroll(rememberScrollState()).padding(horizontal = 24.dp, vertical = 28.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
       Text("Intercom", color = Color.White, fontSize = 30.sp, fontWeight = FontWeight.Bold)
       Text("One-way audio between two Portals on the same Wi-Fi. No internet, no servers.",
-          color = Color(0xFF9A9A9A), fontSize = 15.sp, textAlign = TextAlign.Center)
+          color = Color(0xFF9DB5BA), fontSize = 15.sp, textAlign = TextAlign.Center)
 
       if (myIp.isNotBlank()) {
         Surface(color = MaterialTheme.colorScheme.surface.copy(alpha = 0.9f),

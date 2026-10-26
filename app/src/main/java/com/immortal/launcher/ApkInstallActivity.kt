@@ -151,7 +151,7 @@ private fun InstallPrompt(
               .clickable(interactionSource = noRipple, indication = null) { onCancel() },
   ) {
     Surface(
-        color = Color(0xFF1C1C1E),
+        color = Color(0xFF032F30),
         shape = RoundedCornerShape(28.dp),
         modifier =
             Modifier.padding(24.dp)
@@ -173,13 +173,13 @@ private fun InstallPrompt(
         Text("Install $label?", color = Color.White, fontSize = 20.sp, textAlign = TextAlign.Center)
         Text(
             "via Immortal",
-            color = Color(0xFF8A8A8A),
+            color = Color(0xFF8CA6AB),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 2.dp),
         )
         status?.let {
           Spacer(Modifier.size(12.dp))
-          Text(it, color = Color(0xFF8AB4F8), fontSize = 15.sp, textAlign = TextAlign.Center)
+          Text(it, color = Color(0xFF6BA3BE), fontSize = 15.sp, textAlign = TextAlign.Center)
         }
         Spacer(Modifier.size(22.dp))
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
@@ -187,7 +187,7 @@ private fun InstallPrompt(
               if (status?.contains("✓") == true || status?.startsWith("Paused") == true)
                   "Close"
               else "Cancel",
-              color = Color(0xFF8AB4F8),
+              color = Color(0xFF6BA3BE),
               fontSize = 18.sp,
               modifier = Modifier.clickable { onCancel() }.padding(12.dp),
           )
@@ -195,7 +195,7 @@ private fun InstallPrompt(
             Spacer(Modifier.size(8.dp))
             Text(
                 "Install",
-                color = Color(0xFF8AB4F8),
+                color = Color(0xFF6BA3BE),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.clickable { onInstall { s -> status = s } }.padding(12.dp),

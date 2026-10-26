@@ -58,7 +58,7 @@ fun enableRemoteAndMintPin(context: Context): Pair<String?, String?> {
  */
 @Composable
 fun RemotePairCard(url: String?, pin: String?, modifier: Modifier = Modifier) {
-  Surface(color = Color(0xFF1C1C1E), shape = RoundedCornerShape(18.dp), modifier = modifier.fillMaxWidth()) {
+  Surface(color = Color(0xFF032F30), shape = RoundedCornerShape(18.dp), modifier = modifier.fillMaxWidth()) {
     if (url == null) {
       Text(
           "Connect your Portal to Wi-Fi to use the remote.",
@@ -73,7 +73,7 @@ fun RemotePairCard(url: String?, pin: String?, modifier: Modifier = Modifier) {
           modifier = Modifier.fillMaxWidth().padding(24.dp),
           horizontalAlignment = Alignment.CenterHorizontally,
       ) {
-        Text("Scan with your phone camera", color = Color(0xFF9A9A9A), fontSize = 15.sp)
+        Text("Scan with your phone camera", color = Color(0xFF9DB5BA), fontSize = 15.sp)
         if (qr != null) {
           Surface(color = Color.White, shape = RoundedCornerShape(12.dp), modifier = Modifier.padding(top = 14.dp)) {
             Image(
@@ -83,7 +83,7 @@ fun RemotePairCard(url: String?, pin: String?, modifier: Modifier = Modifier) {
             )
           }
         }
-        Text("or open $url and enter the code", color = Color(0xFF9A9A9A), fontSize = 14.sp, modifier = Modifier.padding(top = 18.dp))
+        Text("or open $url and enter the code", color = Color(0xFF9DB5BA), fontSize = 14.sp, modifier = Modifier.padding(top = 18.dp))
         Text(
             pin ?: "------",
             color = Color.White,
@@ -92,7 +92,7 @@ fun RemotePairCard(url: String?, pin: String?, modifier: Modifier = Modifier) {
             fontFamily = FontFamily.Monospace,
             modifier = Modifier.padding(top = 8.dp),
         )
-        Text("Code expires in a few minutes", color = Color(0xFF7C7C7C), fontSize = 13.sp, modifier = Modifier.padding(top = 4.dp))
+        Text("Code expires in a few minutes", color = Color(0xFF7F9A9F), fontSize = 13.sp, modifier = Modifier.padding(top = 4.dp))
       }
     }
   }
@@ -106,7 +106,7 @@ fun RemotePairCard(url: String?, pin: String?, modifier: Modifier = Modifier) {
 fun PairDoneButton(modifier: Modifier = Modifier, onDone: () -> Unit) {
   Box(modifier = modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
     Surface(
-        color = Color(0xFF2E6BE6),
+        color = Color(0xFF0C969C),
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier.tvFocusable(RoundedCornerShape(12.dp)) { onDone() },
     ) {

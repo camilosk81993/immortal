@@ -77,12 +77,12 @@ internal fun IssOverlay(onDismiss: () -> Unit) {
       Text("🛰️ Space station overhead", color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.Bold)
       val p = passes
       when {
-        p == null -> Text("Finding passes…", color = Color(0xFFB0B0B0), fontSize = 16.sp)
+        p == null -> Text("Finding passes…", color = Color(0xFFB2C6CA), fontSize = 16.sp)
         p.isEmpty() ->
             Text(
                 "No passes found. Check the device is online so it can fetch the latest orbit, " +
                     "and that your location is set (it follows the weather tile).",
-                color = Color(0xFFB0B0B0),
+                color = Color(0xFFB2C6CA),
                 fontSize = 15.sp,
             )
         else -> {
@@ -114,7 +114,7 @@ internal fun IssOverlay(onDismiss: () -> Unit) {
                   }
                   Text(
                       "Rises ${pass.startDir} · peak ${pass.maxElevationDeg}° to the ${pass.peakDir} · sets ${pass.endDir}",
-                      color = Color(0xFFB8B8B8),
+                      color = Color(0xFFBFD3DC),
                       fontSize = 14.sp,
                   )
                 }
@@ -123,7 +123,7 @@ internal fun IssOverlay(onDismiss: () -> Unit) {
           }
           Text(
               "Times are local. ✨ means it should be bright enough to see — go outside and look up to the listed direction.",
-              color = Color(0xFF8A8A8A),
+              color = Color(0xFF8CA6AB),
               fontSize = 12.sp,
           )
         }
@@ -151,12 +151,12 @@ internal fun AuroraOverlay(onDismiss: () -> Unit) {
       Text("🌌 Aurora outlook", color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.Bold)
       val st = status
       when {
-        !loaded -> Text("Checking the K-index…", color = Color(0xFFB0B0B0), fontSize = 16.sp)
+        !loaded -> Text("Checking the K-index…", color = Color(0xFFB2C6CA), fontSize = 16.sp)
         st == null ->
             Text(
                 "Couldn't fetch the K-index. Check the device is online and that your location is " +
                     "set (it follows the weather tile).",
-                color = Color(0xFFB0B0B0),
+                color = Color(0xFFB2C6CA),
                 fontSize = 15.sp,
             )
         else -> {
@@ -177,7 +177,7 @@ internal fun AuroraOverlay(onDismiss: () -> Unit) {
           Text(
               "Source: NOAA SWPC planetary K-index. Best after dark, away from city lights, with a " +
                   "clear ${if (st.lookToward == "N") "northern" else "southern"} horizon.",
-              color = Color(0xFF8A8A8A),
+              color = Color(0xFF8CA6AB),
               fontSize = 12.sp,
           )
         }
@@ -192,7 +192,7 @@ private fun AuroraStat(label: String, value: String, modifier: Modifier = Modifi
   Surface(color = Color(0x18FFFFFF), shape = RoundedCornerShape(12.dp), modifier = modifier) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(vertical = 10.dp).fillMaxWidth()) {
       Text(value, color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-      Text(label, color = Color(0xFF9A9A9A), fontSize = 12.sp, textAlign = TextAlign.Center)
+      Text(label, color = Color(0xFF9DB5BA), fontSize = 12.sp, textAlign = TextAlign.Center)
     }
   }
 }
@@ -214,13 +214,13 @@ internal fun SpeedTestOverlay(onDismiss: () -> Unit) {
 
   BackHandler { onDismiss() }
   Scrim(onDismiss) {
-    Surface(shape = RoundedCornerShape(28.dp), color = Color(0xFF1C1C1E)) {
+    Surface(shape = RoundedCornerShape(28.dp), color = Color(0xFF032F30)) {
       Column(modifier = Modifier.width(380.dp).padding(24.dp)) {
         Text("Speed test", color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.Bold)
         Text(
             if (r.server.isNotEmpty()) r.server
             else if (phase == SpeedTest.Phase.DONE) "Cloudflare" else "Finding server…",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 2.dp),
         )
@@ -273,15 +273,15 @@ private fun SpeedMetric(
       Text(label, color = Color(0xFFDADADA), fontSize = 17.sp, modifier = Modifier.weight(1f))
       Text(shown, color = if (active) accent else Color.White, fontSize = 30.sp, fontWeight = FontWeight.Medium, lineHeight = 30.sp)
       Spacer(Modifier.size(6.dp))
-      Text(unit, color = Color(0xFF9A9A9A), fontSize = 14.sp, modifier = Modifier.padding(bottom = 4.dp))
+      Text(unit, color = Color(0xFF9DB5BA), fontSize = 14.sp, modifier = Modifier.padding(bottom = 4.dp))
     }
   } else {
     Column(modifier) {
-      Text(label.uppercase(), color = Color(0xFF8A8A8A), fontSize = 12.sp, letterSpacing = 0.5.sp)
+      Text(label.uppercase(), color = Color(0xFF8CA6AB), fontSize = 12.sp, letterSpacing = 0.5.sp)
       Row(verticalAlignment = Alignment.Bottom, modifier = Modifier.padding(top = 4.dp)) {
         Text(shown, color = if (active) accent else Color.White, fontSize = 24.sp, fontWeight = FontWeight.Medium, lineHeight = 24.sp)
         Spacer(Modifier.size(4.dp))
-        Text(unit, color = Color(0xFF9A9A9A), fontSize = 12.sp, modifier = Modifier.padding(bottom = 3.dp))
+        Text(unit, color = Color(0xFF9DB5BA), fontSize = 12.sp, modifier = Modifier.padding(bottom = 3.dp))
       }
     }
   }
@@ -328,9 +328,9 @@ internal fun ConverterOverlay(onDismiss: () -> Unit) {
           singleLine = true,
           modifier = Modifier.fillMaxWidth(),
       )
-      Text("From", color = Color(0xFF8A8A8A), fontSize = 12.sp)
+      Text("From", color = Color(0xFF8CA6AB), fontSize = 12.sp)
       ChipRow(units, from) { from = it }
-      Text("To", color = Color(0xFF8A8A8A), fontSize = 12.sp)
+      Text("To", color = Color(0xFF8CA6AB), fontSize = 12.sp)
       ChipRow(units, to) { to = it }
       Text(
           if (result.isBlank()) "—" else "$result $to",
@@ -364,7 +364,7 @@ internal fun TimersOverlay(onDismiss: () -> Unit) {
   Scrim(onDismiss) {
     ToolCard {
       Text("⏲️ Timers", color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.Bold)
-      Text("Start a timer", color = Color(0xFF8A8A8A), fontSize = 12.sp)
+      Text("Start a timer", color = Color(0xFF8CA6AB), fontSize = 12.sp)
       val presets = listOf(1, 3, 5, 10, 15, 30)
       Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
         presets.take(3).forEach { m ->
@@ -377,7 +377,7 @@ internal fun TimersOverlay(onDismiss: () -> Unit) {
         }
       }
       val active = timers.filter { it.endAtMillis > now }.sortedBy { it.endAtMillis }
-      if (active.isEmpty()) Text("No timers running.", color = Color(0xFFB0B0B0), fontSize = 15.sp)
+      if (active.isEmpty()) Text("No timers running.", color = Color(0xFFB2C6CA), fontSize = 15.sp)
       active.forEach { t ->
         Surface(color = Color(0x18FFFFFF), shape = RoundedCornerShape(12.dp), modifier = Modifier.fillMaxWidth()) {
           Row(
@@ -442,7 +442,7 @@ internal fun NotesOverlay(onDismiss: () -> Unit) {
           { NotesConfig.saveText(context, text); saved = true },
           Modifier.fillMaxWidth(),
       )
-      Text("Voice memo", color = Color(0xFF8A8A8A), fontSize = 12.sp)
+      Text("Voice memo", color = Color(0xFF8CA6AB), fontSize = 12.sp)
       if (recording) {
         PillButton(
             "■ Stop recording",

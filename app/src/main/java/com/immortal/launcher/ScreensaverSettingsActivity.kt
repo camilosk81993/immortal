@@ -104,7 +104,7 @@ private fun ScreensaverSettingsScreen() {
                   true
                 } else false
               }
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
@@ -112,7 +112,7 @@ private fun ScreensaverSettingsScreen() {
       Text("Screensaver", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.SemiBold)
       Text(
           "Choose what shows on the photo frame when your Portal is idle.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -128,7 +128,7 @@ private fun ScreensaverSettingsScreen() {
       Text(
           "Turn this off to let your Portal's screen sleep on its own timer (or run your own " +
               "screensaver). Immortal won't switch it back on.",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
       )
@@ -144,7 +144,7 @@ private fun ScreensaverSettingsScreen() {
         }
         Spacer(Modifier.size(6.dp))
         Surface(
-            color = Color(0xFF2E6BE6),
+            color = Color(0xFF0C969C),
             shape = RoundedCornerShape(16.dp),
             modifier =
                 Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {

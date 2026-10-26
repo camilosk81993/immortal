@@ -92,14 +92,14 @@ private fun CameraViewerScreen() {
 
   Box(modifier = Modifier.fillMaxSize()) {
     Column(
-        modifier = Modifier.fillMaxSize().background(Color(0xFF111111))
+        modifier = Modifier.fillMaxSize().background(Color(0xFF031716))
             .verticalScroll(rememberScrollState()).padding(horizontal = 24.dp, vertical = 28.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
       Text("Cameras", color = Color.White, fontSize = 30.sp, fontWeight = FontWeight.Bold)
       Text("Live view of an RTSP camera (e.g. rtsp://user:pass@192.168.1.50:554/stream).",
-          color = Color(0xFF9A9A9A), fontSize = 15.sp, textAlign = TextAlign.Center)
+          color = Color(0xFF9DB5BA), fontSize = 15.sp, textAlign = TextAlign.Center)
 
       cameras.forEach { cam ->
         Surface(color = MaterialTheme.colorScheme.surface.copy(alpha = 0.92f),
@@ -108,7 +108,7 @@ private fun CameraViewerScreen() {
             Column(modifier = Modifier.weight(1f)
                 .tvFocusableRow { playing = cam }) {
               Text(cam.name, color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.SemiBold)
-              Text(cam.url, color = Color(0xFF9A9A9A), fontSize = 12.sp, maxLines = 1)
+              Text(cam.url, color = Color(0xFF9DB5BA), fontSize = 12.sp, maxLines = 1)
             }
             Box(modifier = Modifier.size(40.dp).clickable {
               CameraConfig.remove(context, cam.id); cameras = CameraConfig.load(context)

@@ -76,7 +76,7 @@ private fun WorldClockRenameScreen(zone: String, onDone: () -> Unit) {
   Column(
       modifier =
           Modifier.fillMaxSize()
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
@@ -85,7 +85,7 @@ private fun WorldClockRenameScreen(zone: String, onDone: () -> Unit) {
       Text(
           "Give this clock a name that means something to you. Leave it empty to go back to the " +
               "city name.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -95,7 +95,7 @@ private fun WorldClockRenameScreen(zone: String, onDone: () -> Unit) {
       OutlinedTextField(
           value = name,
           onValueChange = { name = it },
-          placeholder = { Text(city, color = Color(0xFF777777)) },
+          placeholder = { Text(city, color = Color(0xFF7B9599)) },
           singleLine = true,
           modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp),
           shape = RoundedCornerShape(14.dp),
@@ -103,7 +103,7 @@ private fun WorldClockRenameScreen(zone: String, onDone: () -> Unit) {
 
       Text(
           "$city · $zone",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 10.dp, start = 4.dp),
       )
@@ -111,7 +111,7 @@ private fun WorldClockRenameScreen(zone: String, onDone: () -> Unit) {
       Spacer(Modifier.heightIn(min = 26.dp))
 
       Surface(
-          color = Color(0xFF2E6BE6),
+          color = Color(0xFF0C969C),
           shape = RoundedCornerShape(16.dp),
           modifier =
               Modifier.fillMaxWidth().then(initialFocus).tvFocusable(
@@ -133,7 +133,7 @@ private fun WorldClockRenameScreen(zone: String, onDone: () -> Unit) {
       Spacer(Modifier.heightIn(min = 12.dp))
 
       Surface(
-          color = Color(0xFF1C1C1E),
+          color = Color(0xFF032F30),
           shape = RoundedCornerShape(16.dp),
           modifier =
               Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {

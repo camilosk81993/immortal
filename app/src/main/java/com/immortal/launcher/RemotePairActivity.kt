@@ -95,7 +95,7 @@ private fun RemotePairScreen() {
       Text(
           "Use a phone or tablet on the same Wi-Fi as a remote for this Portal — nav buttons and " +
               "an app launcher, no extra app to install.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )

@@ -88,14 +88,14 @@ private fun SunriseScreen() {
             .put("chime", chime))
   }
 
-  Box(modifier = Modifier.fillMaxSize().background(Color(0xFF1A1A1A)), contentAlignment = Alignment.TopCenter) {
+  Box(modifier = Modifier.fillMaxSize().background(Color(0xFF031716)), contentAlignment = Alignment.TopCenter) {
     Column(
         modifier = Modifier.widthIn(max = 620.dp).padding(28.dp).verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(18.dp),
     ) {
       Text("🌅 Sunrise alarm", color = Color.White, fontSize = 26.sp, fontWeight = FontWeight.Bold)
       Text("The screen brightens gradually to wake you, with an optional gentle chime.",
-          color = Color(0xFFB8B8B8), fontSize = 15.sp)
+          color = Color(0xFFBFD3DC), fontSize = 15.sp)
 
       Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
         Text("Enabled", color = Color.White, fontSize = 18.sp, modifier = Modifier.weight(1f))
@@ -106,7 +106,7 @@ private fun SunriseScreen() {
       Stepper("Hour", hour, 0, 23) { hour = it; persist() }
       Stepper("Minute", minute, 0, 59, step = 5) { minute = it; persist() }
 
-      Text("Wake on", color = Color(0xFF9A9A9A), fontSize = 14.sp)
+      Text("Wake on", color = Color(0xFF9DB5BA), fontSize = 14.sp)
       Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         DAY_LABELS.forEach { (d, label) ->
           val on = d in days
@@ -137,7 +137,7 @@ private fun SunriseScreen() {
               "Next: " + java.text.SimpleDateFormat("EEE d MMM, HH:mm", java.util.Locale.getDefault())
                   .format(java.util.Date(next))
           else "Alarm is off.",
-          color = Color(0xFF8AB4F8), fontSize = 15.sp)
+          color = Color(0xFF6BA3BE), fontSize = 15.sp)
 
       Surface(color = Color(0xFFEF6C00), shape = RoundedCornerShape(14.dp),
           modifier = Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(14.dp)) {

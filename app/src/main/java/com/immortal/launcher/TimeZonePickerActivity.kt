@@ -304,7 +304,7 @@ private fun TimeZonePickerScreen(onBack: () -> Unit) {
   Column(
       modifier =
           Modifier.fillMaxSize()
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
@@ -312,7 +312,7 @@ private fun TimeZonePickerScreen(onBack: () -> Unit) {
       Text("Add a timezone", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.SemiBold)
       Text(
           "Search for a city or a country, then pick one to add to the world clock.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -322,7 +322,7 @@ private fun TimeZonePickerScreen(onBack: () -> Unit) {
       OutlinedTextField(
           value = query,
           onValueChange = { query = it },
-          placeholder = { Text("auckland", color = Color(0xFF777777)) },
+          placeholder = { Text("auckland", color = Color(0xFF7B9599)) },
           singleLine = true,
           modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).then(initialFocus),
           shape = RoundedCornerShape(14.dp),
@@ -331,14 +331,14 @@ private fun TimeZonePickerScreen(onBack: () -> Unit) {
       Text(
           if (query.isBlank()) "${all.size} timezones. Start typing to narrow it down."
           else "${matches.size} shown",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 10.dp, start = 4.dp),
       )
       Text(
           "Places without a timezone of their own still work. Seattle gives you Los Angeles time, " +
               "named Seattle.",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 4.dp, start = 4.dp),
       )
@@ -373,14 +373,14 @@ private fun TimeZonePickerScreen(onBack: () -> Unit) {
               Text(
                   if (hit.viaAlias) "${ImmortalSettings.cityFromZoneId(hit.zone)} time · ${hit.zone}"
                   else hit.zone,
-                  color = Color(0xFF9A9A9A),
+                  color = Color(0xFF9DB5BA),
                   fontSize = 13.sp,
                   modifier = Modifier.padding(top = 2.dp),
               )
             }
             Text(
                 if (on) "added" else offsetLabel(hit.zone, now),
-                color = if (on) Color(0xFF8AB4F8) else Color(0xFF7C7C7C),
+                color = if (on) Color(0xFF6BA3BE) else Color(0xFF7F9A9F),
                 fontSize = 13.sp,
             )
           }
@@ -390,7 +390,7 @@ private fun TimeZonePickerScreen(onBack: () -> Unit) {
       if (matches.isEmpty()) {
         Text(
             "Nothing matches \"${query.trim()}\". Try a city like Auckland, or a country like Vietnam.",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 14.sp,
             modifier = Modifier.padding(top = 4.dp, start = 4.dp),
         )
@@ -399,7 +399,7 @@ private fun TimeZonePickerScreen(onBack: () -> Unit) {
       Spacer(Modifier.size(18.dp))
       Text(
           "Press Back to return without adding anything.",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(start = 4.dp),
       )

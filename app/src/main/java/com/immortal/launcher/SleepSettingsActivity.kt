@@ -133,7 +133,7 @@ private fun SleepSettingsScreen() {
     Column(
         modifier =
             Modifier.fillMaxSize()
-                .background(Color(0xFF111111))
+                .background(Color(0xFF031716))
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp, vertical = 28.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -143,7 +143,7 @@ private fun SleepSettingsScreen() {
       Text(
           if (settings.sleepTimerEnabled) "Set the timer, then start the countdown."
           else "Enable Sleep Timer below before starting.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 15.sp,
           textAlign = TextAlign.Center,
       )
@@ -246,7 +246,7 @@ private fun SleepSettingsScreen() {
       Spacer(Modifier.size(8.dp))
       Text(
           "When the timer reaches zero, Immortal pauses audio, closes itself, disables the screensaver, and locks the screen.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 13.sp,
           textAlign = TextAlign.Center,
       )
@@ -285,7 +285,7 @@ private fun SleepMinuteStepper(minutes: Int, onChange: (Int) -> Unit) {
                 } else false
               }
               .focusable(interactionSource = src)
-              .background(if (focused) Color(0x402E6BE6) else Color.Transparent)
+              .background(if (focused) Color(0x400C969C) else Color.Transparent)
               .padding(start = 18.dp, end = 6.dp, top = 6.dp, bottom = 6.dp),
       verticalAlignment = Alignment.CenterVertically,
   ) {
@@ -293,7 +293,7 @@ private fun SleepMinuteStepper(minutes: Int, onChange: (Int) -> Unit) {
     ArrowButton("◀", focused) { onChange(max(1, minutes - 5)) }
     Text(
         "${minutes}m",
-        color = if (focused) Color.White else Color(0xFFDDDDDD),
+        color = if (focused) Color.White else Color(0xFFDCEBEC),
         fontSize = 17.sp,
         fontWeight = FontWeight.SemiBold,
         textAlign = TextAlign.Center,

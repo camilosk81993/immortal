@@ -246,14 +246,14 @@ private fun BrowseScreen(
       OutlinedTextField(
           value = query,
           onValueChange = onQuery,
-          placeholder = { Text("Search apps…", color = Color(0xFF777777)) },
+          placeholder = { Text("Search apps…", color = Color(0xFF7B9599)) },
           singleLine = true,
           modifier = Modifier.fillMaxWidth().heightIn(min = 54.dp),
           shape = RoundedCornerShape(14.dp),
       )
       Text(
           "📁  Have an APK file? Install it →",
-          color = Color(0xFF8AB4F8),
+          color = Color(0xFF6BA3BE),
           fontSize = 15.sp,
           modifier =
               Modifier.padding(top = 10.dp).tvFocusable(RoundedCornerShape(8.dp)) {
@@ -355,7 +355,7 @@ private fun AppCard(
             Text(
                 "  ·  $it",
                 fontSize = 12.sp,
-                color = Color(0xFF8A8A8A),
+                color = Color(0xFF8CA6AB),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -426,7 +426,7 @@ private fun Chip(text: String, color: Color) {
     Text(
         text,
         fontSize = 12.sp,
-        color = Color(0xFFDDDDDD),
+        color = Color(0xFFDCEBEC),
         modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
     )
   }
@@ -495,7 +495,7 @@ private fun AppDetailScreen(
     Spacer(Modifier.height(56.dp))
     Text(
         "←  App Store",
-        color = Color(0xFF8AB4F8),
+        color = Color(0xFF6BA3BE),
         fontSize = 16.sp,
         modifier =
             Modifier.focusRequester(backFocus).tvFocusable(RoundedCornerShape(8.dp)) { onBack() },
@@ -506,12 +506,12 @@ private fun AppDetailScreen(
       AppIcon(app, 96.dp)
       Column(modifier = Modifier.padding(start = 22.dp)) {
         Text(app.name, fontSize = 30.sp, fontWeight = FontWeight.Bold)
-        app.author?.let { Text(it, fontSize = 15.sp, color = Color(0xFF9A9A9A)) }
+        app.author?.let { Text(it, fontSize = 15.sp, color = Color(0xFF9DB5BA)) }
         Row(
             modifier = Modifier.padding(top = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-          Chip(if (app.source == "fdroid") "F-Droid" else "Direct download", Color(0xFF2E6BE6))
+          Chip(if (app.source == "fdroid") "F-Droid" else "Direct download", Color(0xFF0C969C))
           if (!compatible) Chip(StoreCatalog.incompatibleLabel(app.minSdk ?: 0), Color(0xFFB9552E))
           if (app.devices.size == 1)
               Chip(
@@ -547,7 +547,7 @@ private fun AppDetailScreen(
         app.longDescription ?: app.description,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        color = Color(0xFFDDDDDD),
+        color = Color(0xFFDCEBEC),
     )
 
     Spacer(Modifier.height(28.dp))
@@ -558,7 +558,7 @@ private fun AppDetailScreen(
     app.homepage?.let { url ->
       Text(
           "Website  ·  $url",
-          color = Color(0xFF8AB4F8),
+          color = Color(0xFF6BA3BE),
           fontSize = 14.sp,
           modifier =
               Modifier.padding(vertical = 6.dp).tvFocusable(RoundedCornerShape(8.dp)) {
@@ -574,8 +574,8 @@ private fun AppDetailScreen(
 @Composable
 private fun DetailRow(label: String, value: String) {
   Row(modifier = Modifier.padding(vertical = 6.dp)) {
-    Text(label, color = Color(0xFF8A8A8A), fontSize = 14.sp, modifier = Modifier.width(130.dp))
-    Text(value, color = Color(0xFFDDDDDD), fontSize = 14.sp)
+    Text(label, color = Color(0xFF8CA6AB), fontSize = 14.sp, modifier = Modifier.width(130.dp))
+    Text(value, color = Color(0xFFDCEBEC), fontSize = 14.sp)
   }
 }
 

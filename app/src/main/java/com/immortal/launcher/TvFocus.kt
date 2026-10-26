@@ -73,7 +73,7 @@ fun Modifier.tvFocusable(
  */
 @Composable
 fun Modifier.tvFocusableRow(
-    focusFill: Color = Color(0x402E6BE6),
+    focusFill: Color = Color(0x400C969C),
     onClick: () -> Unit,
 ): Modifier {
   val source = remember { MutableInteractionSource() }

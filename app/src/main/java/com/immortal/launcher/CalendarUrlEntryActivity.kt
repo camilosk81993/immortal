@@ -81,7 +81,7 @@ private fun CalendarUrlEntryScreen(
   Column(
       modifier =
           Modifier.fillMaxSize()
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
@@ -95,7 +95,7 @@ private fun CalendarUrlEntryScreen(
       Text(
           "Paste a private iCalendar (.ics) link from Google Calendar or Apple iCloud. " +
               "Immortal reads it directly — it can't sign in to your account.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -106,7 +106,7 @@ private fun CalendarUrlEntryScreen(
           value = url,
           onValueChange = { url = it },
           placeholder = {
-            Text("https://calendar.google.com/calendar/ical/…/basic.ics", color = Color(0xFF777777))
+            Text("https://calendar.google.com/calendar/ical/…/basic.ics", color = Color(0xFF7B9599))
           },
           singleLine = true,
           modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp),
@@ -119,7 +119,7 @@ private fun CalendarUrlEntryScreen(
             supported -> "Looks like a $provider link."
             else -> "That doesn't look like a calendar (.ics) link yet."
           },
-          color = if (supported || trimmed.isEmpty()) Color(0xFF9A9A9A) else Color(0xFFE89090),
+          color = if (supported || trimmed.isEmpty()) Color(0xFF9DB5BA) else Color(0xFFE89090),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 10.dp, start = 4.dp),
       )
@@ -127,7 +127,7 @@ private fun CalendarUrlEntryScreen(
       Spacer(Modifier.heightIn(min = 26.dp))
 
       Surface(
-          color = if (supported) Color(0xFF2E6BE6) else Color(0xFF2A2A2C),
+          color = if (supported) Color(0xFF0C969C) else Color(0xFF0A3B3D),
           shape = RoundedCornerShape(16.dp),
           modifier =
               Modifier.fillMaxWidth().then(initialFocus).tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {
@@ -136,7 +136,7 @@ private fun CalendarUrlEntryScreen(
       ) {
         Text(
             "Use this calendar",
-            color = if (supported) Color.White else Color(0xFF777777),
+            color = if (supported) Color.White else Color(0xFF7B9599),
             fontSize = 18.sp,
             fontWeight = FontWeight.SemiBold,
             textAlign = TextAlign.Center,
@@ -148,7 +148,7 @@ private fun CalendarUrlEntryScreen(
 
       if (existing.isNotBlank()) {
         Surface(
-            color = Color(0xFF1C1C1E),
+            color = Color(0xFF032F30),
             shape = RoundedCornerShape(16.dp),
             modifier =
                 Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {
@@ -167,7 +167,7 @@ private fun CalendarUrlEntryScreen(
       }
 
       Surface(
-          color = Color(0xFF1C1C1E),
+          color = Color(0xFF032F30),
           shape = RoundedCornerShape(16.dp),
           modifier =
               Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {
@@ -176,7 +176,7 @@ private fun CalendarUrlEntryScreen(
       ) {
         Text(
             "Cancel",
-            color = Color(0xFFDDDDDD),
+            color = Color(0xFFDCEBEC),
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(vertical = 14.dp).fillMaxWidth(),
@@ -187,7 +187,7 @@ private fun CalendarUrlEntryScreen(
 
       Text(
           "How to get a link:",
-          color = Color(0xFFBBBBBB),
+          color = Color(0xFFBFD3DC),
           fontSize = 14.sp,
           fontWeight = FontWeight.SemiBold,
           modifier = Modifier.padding(start = 4.dp, bottom = 6.dp),
@@ -198,7 +198,7 @@ private fun CalendarUrlEntryScreen(
               "Keep it private — anyone with it can read the calendar.\n" +
               "• Apple iCloud → Calendar app → tap a calendar → turn on \"Public Calendar\" " +
               "→ Copy Link (a webcal:// link works too).",
-          color = Color(0xFF8A8A8A),
+          color = Color(0xFF8CA6AB),
           fontSize = 13.sp,
           modifier = Modifier.padding(start = 4.dp),
       )

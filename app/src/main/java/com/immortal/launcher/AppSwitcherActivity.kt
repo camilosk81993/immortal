@@ -109,14 +109,14 @@ private fun AppSwitcherScreen(onDone: () -> Unit) {
   Column(
       modifier =
           Modifier.fillMaxSize()
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .padding(horizontal = 28.dp, vertical = 24.dp),
   ) {
     OutlinedTextField(
         value = query,
         onValueChange = { query = it },
         singleLine = true,
-        placeholder = { Text("Search apps", color = Color(0xFF777777)) },
+        placeholder = { Text("Search apps", color = Color(0xFF7B9599)) },
         shape = RoundedCornerShape(14.dp),
         modifier = Modifier.fillMaxWidth(),
     )
@@ -129,7 +129,7 @@ private fun AppSwitcherScreen(onDone: () -> Unit) {
 
     Text(
         if (searching) "All apps" else "Recent apps",
-        color = Color(0xFF9A9A9A),
+        color = Color(0xFF9DB5BA),
         fontSize = 13.sp,
         fontWeight = FontWeight.SemiBold,
         modifier = Modifier.padding(top = 16.dp, bottom = 8.dp, start = 4.dp),
@@ -223,7 +223,7 @@ private fun AppTile(
     if (subtitle != null) {
       Text(
           subtitle,
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 11.sp,
           maxLines = 1,
           overflow = TextOverflow.Ellipsis,
@@ -244,7 +244,7 @@ private fun AppActionMenu(
     onDismiss: () -> Unit,
 ) {
   androidx.compose.ui.window.Dialog(onDismissRequest = onDismiss) {
-    Surface(color = Color(0xFF1C1C1E), shape = RoundedCornerShape(18.dp)) {
+    Surface(color = Color(0xFF032F30), shape = RoundedCornerShape(18.dp)) {
       Column(modifier = Modifier.padding(vertical = 10.dp)) {
         Text(
             app.label,
@@ -274,7 +274,7 @@ private fun ActionRow(label: String, danger: Boolean = false, onClick: () -> Uni
 
 @Composable
 private fun Hint(text: String) {
-  Text(text, color = Color(0xFF9A9A9A), fontSize = 15.sp, modifier = Modifier.padding(top = 24.dp, start = 4.dp))
+  Text(text, color = Color(0xFF9DB5BA), fontSize = 15.sp, modifier = Modifier.padding(top = 24.dp, start = 4.dp))
 }
 
 // --- helpers ------------------------------------------------------------------

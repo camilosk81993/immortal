@@ -919,7 +919,7 @@ private fun LauncherScreen(
                 // Top is padded clear of the 60dp systemui status-bar window,
                 // which silently eats touches even while hidden in immersive —
                 // so header action buttons stay tappable.
-                .padding(start = 32.dp, end = 32.dp, top = 40.dp, bottom = 24.dp)
+                .padding(start = 32.dp, end = 32.dp, top = 40.dp, bottom = 112.dp)
     ) {
       HeaderBar(onScreensaver = onStartScreensaver)
       Spacer(Modifier.size(20.dp))
@@ -1135,6 +1135,12 @@ private fun LauncherScreen(
         WeatherWidget(mode = weatherWidget, fahrenheit = weatherFahrenheit)
       }
     }
+
+    HomeDock(
+        apps = apps,
+        onLaunch = onLaunch,
+        modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 22.dp),
+    )
 
     // Manage / Done toggle lives in the bottom-right corner. While managing, a
     // sibling + button opens the widget picker so widgets are an edit action, not
@@ -1399,6 +1405,21 @@ private fun customWidgetLabel(kind: String): String =
       else -> "Widget"
     }
 
+/** Saludo informal que cambia con la hora y el dia (sin nombres: lo usa toda la casa). */
+private fun greetingFor(now: Date): String {
+  val cal = java.util.Calendar.getInstance().apply { time = now }
+  val h = cal.get(java.util.Calendar.HOUR_OF_DAY)
+  val day = cal.get(java.util.Calendar.DAY_OF_YEAR)
+  val options =
+      when {
+        h < 5 -> listOf("¿Madrugando o trasnochando?", "Noche larga, ¿no?")
+        h < 12 -> listOf("Buen día, a darle", "Arrancamos con toda", "Hoy se puede todo")
+        h < 19 -> listOf("Quiubo, buena tarde", "Tarde de buena energía", "Vamos con toda")
+        else -> listOf("Noche de buena vibra", "Hora de relajar", "Buenas, a descansar")
+      }
+  return options[day % options.size]
+}
+
 @Composable
 private fun HeaderBar(onScreensaver: () -> Unit) {
   var now by remember { mutableStateOf(Date()) }
@@ -1470,18 +1491,26 @@ private fun HeaderBar(onScreensaver: () -> Unit) {
   Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
     // Clock anchors the top-left corner; the action buttons sit just to its right
     // (now that there's a group of them, leading with the buttons looked off).
-    Text(
-        SimpleDateFormat(if (use24Hour) "H:mm" else "h:mm", Locale.getDefault()).format(now),
-        color = Color.White,
-        fontSize = 56.sp,
-        fontWeight = FontWeight.Light,
-        lineHeight = 56.sp,
-    )
+    Column {
+      Text(
+          greetingFor(now),
+          color = Color(0xFF9CC9DE),
+          fontSize = 18.sp,
+          fontWeight = FontWeight.Medium,
+      )
+      Text(
+          SimpleDateFormat(if (use24Hour) "H:mm" else "h:mm", Locale.getDefault()).format(now),
+          color = Color.White,
+          fontSize = 72.sp,
+          fontWeight = FontWeight.Light,
+          lineHeight = 76.sp,
+      )
+    }
     Spacer(Modifier.size(28.dp))
     // Screensaver entry — the stock launcher's stacked-photo icon so the affordance
     // reads the same as the Portal users already know.
     Surface(
-        color = Color(0x33FFFFFF),
+        color = Color(0x66032F30),
         shape = androidx.compose.foundation.shape.CircleShape,
         modifier =
             Modifier.size(56.dp).tvFocusable(androidx.compose.foundation.shape.CircleShape) {
@@ -1494,7 +1523,7 @@ private fun HeaderBar(onScreensaver: () -> Unit) {
     // QR/PIN modal, so a phone pairs without digging into Settings.
     Spacer(Modifier.size(14.dp))
     Surface(
-        color = Color(0x33FFFFFF),
+        color = Color(0x66032F30),
         shape = androidx.compose.foundation.shape.CircleShape,
         modifier =
             Modifier.size(56.dp).tvFocusable(androidx.compose.foundation.shape.CircleShape) {
@@ -1513,7 +1542,7 @@ private fun HeaderBar(onScreensaver: () -> Unit) {
     heyPkg?.let { pkg ->
       Spacer(Modifier.size(14.dp))
       Surface(
-          color = Color(0x33FFFFFF),
+          color = Color(0x66032F30),
           shape = androidx.compose.foundation.shape.CircleShape,
           modifier =
               Modifier.size(56.dp).tvFocusable(
@@ -1552,7 +1581,7 @@ private fun HeaderBar(onScreensaver: () -> Unit) {
       }
       Text(
           DateFormatter.format(now, "EEEEMMMMd"),
-          color = Color(0xFFDADADA),
+          color = Color(0xFFBFD3DC),
           fontSize = 18.sp,
           modifier = Modifier.padding(top = 4.dp),
       )
@@ -1561,12 +1590,12 @@ private fun HeaderBar(onScreensaver: () -> Unit) {
 
   if (showPair) {
     androidx.compose.ui.window.Dialog(onDismissRequest = { showPair = false }) {
-      Surface(color = Color(0xFF101012), shape = androidx.compose.foundation.shape.RoundedCornerShape(20.dp)) {
+      Surface(color = Color(0xFF031716), shape = androidx.compose.foundation.shape.RoundedCornerShape(20.dp)) {
         Column(modifier = Modifier.padding(20.dp)) {
           Text("Control from your phone", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
           Text(
               "Scan with a phone on the same Wi-Fi, or open the address and enter the code.",
-              color = Color(0xFF9A9A9A),
+              color = Color(0xFF9DB5BA),
               fontSize = 13.sp,
               modifier = Modifier.padding(top = 4.dp, bottom = 14.dp),
           )
@@ -1771,7 +1800,7 @@ private fun WeatherWidget(mode: String, fahrenheit: Boolean) {
         // background, so no action is needed from the user.
         Text(
             "Forecast unavailable. It'll appear once your Portal is back online.",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 14.sp,
             modifier = Modifier.padding(start = 4.dp, bottom = 4.dp),
         )
@@ -1816,7 +1845,7 @@ private fun DayCell(d: Weather.DayForecast, modifier: Modifier = Modifier) {
     Text(Weather.emoji(d.code), fontSize = 26.sp, modifier = Modifier.padding(vertical = 6.dp))
     Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
       Text("${d.hi}°", color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
-      Text("${d.lo}°", color = Color(0xFF9A9A9A), fontSize = 16.sp)
+      Text("${d.lo}°", color = Color(0xFF9DB5BA), fontSize = 16.sp)
     }
   }
 }
@@ -2111,6 +2140,41 @@ private const val ICON_HELP =
 private const val ICON_GEAR =
     "M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
 
+/** Apps del dock (barra inferior de vidrio), por nombre. Cambia esta lista para elegir otras. */
+private val DOCK_LABELS = listOf("Jarvis", "Browser", "SmartTube", "NewPipe", "Moonlight")
+
+@Composable
+private fun HomeDock(
+    apps: List<AppEntry>,
+    onLaunch: (ComponentName) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+  val picks =
+      DOCK_LABELS.mapNotNull { want -> apps.firstOrNull { it.label.contains(want, ignoreCase = true) } }
+  if (picks.isEmpty()) return
+  Row(
+      modifier =
+          modifier
+              .clip(RoundedCornerShape(36.dp))
+              .background(Color(0x99032F30))
+              .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(36.dp))
+              .padding(horizontal = 22.dp, vertical = 12.dp),
+      horizontalArrangement = Arrangement.spacedBy(20.dp),
+      verticalAlignment = Alignment.CenterVertically,
+  ) {
+    picks.forEach { app ->
+      Image(
+          bitmap = app.icon,
+          contentDescription = app.label,
+          modifier =
+              Modifier.size(58.dp).clip(RoundedCornerShape(17.dp)).tvFocusable(RoundedCornerShape(17.dp)) {
+                onLaunch(app.component)
+              },
+      )
+    }
+  }
+}
+
 /** A non-app tile injected into a folder (e.g. the Screensaver settings entry). */
 private data class FolderExtra(val label: String, val glyph: String, val onClick: () -> Unit)
 
@@ -2323,7 +2387,7 @@ private fun FolderOverlay(
         Spacer(Modifier.size(6.dp))
         Text(
             "Drag an app out to remove it",
-            color = Color(0xFF8A8A8A),
+            color = Color(0xFF8CA6AB),
             fontSize = 13.sp,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
@@ -2405,14 +2469,14 @@ private fun NameOverlay(
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
           Text(
               "Cancel",
-              color = Color(0xFF8AB4F8),
+              color = Color(0xFF6BA3BE),
               fontSize = 18.sp,
               modifier = Modifier.clickable { onCancel() }.padding(12.dp),
           )
           Spacer(Modifier.size(8.dp))
           Text(
               confirmLabel,
-              color = Color(0xFF8AB4F8),
+              color = Color(0xFF6BA3BE),
               fontSize = 18.sp,
               fontWeight = FontWeight.Bold,
               modifier = Modifier.clickable { onConfirm(field.text) }.padding(12.dp),
@@ -2576,7 +2640,7 @@ private fun WidgetTile(
             )
             Text(
                 widget.providerPackage,
-                color = Color(0xFF9A9A9A),
+                color = Color(0xFF9DB5BA),
                 fontSize = 13.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -2800,7 +2864,7 @@ private fun AnalogClock(zoneId: String, now: Date, modifier: Modifier = Modifier
   val second = cal.get(java.util.Calendar.SECOND)
   val night = cal.get(java.util.Calendar.HOUR_OF_DAY) !in 6..18
   val face = if (night) Color(0xFF1F1F22) else Color.White
-  val ink = if (night) Color.White else Color(0xFF1A1A1A)
+  val ink = if (night) Color.White else Color(0xFF031716)
   val tick = if (night) Color(0x66FFFFFF) else Color(0x55000000)
   Canvas(modifier) {
     val r = size.minDimension / 2f
@@ -2939,7 +3003,7 @@ private fun CustomTimerDialog(onStart: (Long) -> Unit, onDismiss: () -> Unit) {
 @Composable
 private fun DurationStepper(label: String, value: Int, step: Int, onChange: (Int) -> Unit) {
   Column(horizontalAlignment = Alignment.CenterHorizontally) {
-    Text(label.uppercase(Locale.getDefault()), color = Color(0xFF9A9A9A), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+    Text(label.uppercase(Locale.getDefault()), color = Color(0xFF9DB5BA), fontSize = 11.sp, fontWeight = FontWeight.Bold)
     Spacer(Modifier.size(8.dp))
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -3029,7 +3093,7 @@ private fun WidgetPickerOverlay(
             Text("Add widget", color = Color.White, fontSize = 28.sp, fontWeight = FontWeight.SemiBold)
             Text(
                 "Choose a widget provider installed on this Portal.",
-                color = Color(0xFF9A9A9A),
+                color = Color(0xFF9DB5BA),
                 fontSize = 14.sp,
                 modifier = Modifier.padding(top = 4.dp),
             )
@@ -3045,7 +3109,7 @@ private fun WidgetPickerOverlay(
         if (status != null) {
           Text(
               status,
-              color = Color(0xFF8AB4F8),
+              color = Color(0xFF6BA3BE),
               fontSize = 13.sp,
               modifier = Modifier.padding(top = 14.dp),
           )
@@ -3058,7 +3122,7 @@ private fun WidgetPickerOverlay(
           ) {
             Text(
                 "No widget providers are installed.",
-                color = Color(0xFFB8B8B8),
+                color = Color(0xFFBFD3DC),
                 fontSize = 16.sp,
             )
           }
@@ -3120,7 +3184,7 @@ private fun WidgetProviderTile(provider: WidgetProviderEntry, onClick: () -> Uni
         )
         Text(
             provider.packageLabel,
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 12.sp,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
@@ -3128,7 +3192,7 @@ private fun WidgetProviderTile(provider: WidgetProviderEntry, onClick: () -> Uni
         )
         Text(
             "${provider.spanX} x ${provider.spanY}",
-            color = Color(0xFF7C7C7C),
+            color = Color(0xFF7F9A9F),
             fontSize = 11.sp,
             modifier = Modifier.padding(top = 5.dp),
         )
@@ -3306,15 +3370,21 @@ private fun AppTile(
   ) {
     // The icon (and its delete badge) jiggle as a unit in Manage mode; the label stays still.
     Box(modifier = Modifier.jiggle(editMode && !dimmed, app.component.packageName.hashCode())) {
-      Image(
-          bitmap = app.icon,
-          contentDescription = app.label,
+      Box(
+          contentAlignment = Alignment.Center,
           modifier =
               Modifier.size(LocalTileDp.current)
                   .clip(RoundedCornerShape(24.dp))
-                  .border(1.dp, Color(0x33FFFFFF), RoundedCornerShape(24.dp))
+                  .background(Color(0x80032F30))
+                  .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(24.dp))
                   .alpha(if (dimmed) 0.3f else 1f),
-      )
+      ) {
+        Image(
+            bitmap = app.icon,
+            contentDescription = app.label,
+            modifier = Modifier.size(LocalTileDp.current - 18.dp).clip(RoundedCornerShape(18.dp)),
+        )
+      }
       if (editMode) {
         // Sits at the icon's outer top-right corner (nudged off the icon, iOS-style).
         RemoveBadge(

@@ -226,7 +226,7 @@ private fun DismissAppScreen(onDone: () -> Unit) {
   Column(
       modifier =
           Modifier.fillMaxSize()
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 24.dp),
   ) {
@@ -252,7 +252,7 @@ private fun DismissAppScreen(onDone: () -> Unit) {
       }
       Text(
           "Choose what opens when you tap the screensaver to wake the Portal.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp, start = 58.dp),
       )
@@ -292,7 +292,7 @@ private fun DismissAppScreen(onDone: () -> Unit) {
               Text(
                   "The path after your Home Assistant address (e.g. lovelace/0). " +
                       "Leave blank to open your default dashboard.",
-                  color = Color(0xFF8A8A8A),
+                  color = Color(0xFF8CA6AB),
                   fontSize = 13.sp,
                   modifier = Modifier.padding(top = 8.dp),
               )
@@ -320,7 +320,7 @@ private fun DismissAppScreen(onDone: () -> Unit) {
           Divider()
           Text(
               "Finding your apps…",
-              color = Color(0xFF9A9A9A),
+              color = Color(0xFF9DB5BA),
               fontSize = 15.sp,
               modifier = Modifier.padding(18.dp),
           )
@@ -373,7 +373,7 @@ private fun DismissRow(
       if (subtitle != null) {
         Text(
             subtitle,
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 2.dp),
         )

@@ -15,11 +15,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.immortal.launcher.R
 
-private val InterFontFamily =
+private val AppFontFamily =
     FontFamily(
-        Font(R.font.inter, weight = FontWeight.Normal),
-        Font(R.font.inter_medium, weight = FontWeight.Medium),
-        Font(R.font.inter_bold, weight = FontWeight.Bold),
+        Font(R.font.poppins_light, weight = FontWeight.Light),
+        Font(R.font.poppins_regular, weight = FontWeight.Normal),
+        Font(R.font.poppins_medium, weight = FontWeight.Medium),
+        Font(R.font.poppins_semibold, weight = FontWeight.SemiBold),
+        Font(R.font.poppins_semibold, weight = FontWeight.Bold),
     )
 
 // Meta Horizon: Inter typeface, min 14sp, 18sp recommended for body, Medium/Bold weights
@@ -27,56 +29,56 @@ val Typography =
     Typography(
         headlineSmall =
             TextStyle(
-                fontFamily = InterFontFamily,
+                fontFamily = AppFontFamily,
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
                 lineHeight = 32.sp,
             ),
         titleMedium =
             TextStyle(
-                fontFamily = InterFontFamily,
+                fontFamily = AppFontFamily,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
                 lineHeight = 24.sp,
             ),
         bodyLarge =
             TextStyle(
-                fontFamily = InterFontFamily,
-                fontWeight = FontWeight.Medium,
+                fontFamily = AppFontFamily,
+                fontWeight = FontWeight.Normal,
                 fontSize = 18.sp,
                 lineHeight = 28.sp,
             ),
         bodyMedium =
             TextStyle(
-                fontFamily = InterFontFamily,
-                fontWeight = FontWeight.Medium,
+                fontFamily = AppFontFamily,
+                fontWeight = FontWeight.Normal,
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
             ),
         bodySmall =
             TextStyle(
-                fontFamily = InterFontFamily,
-                fontWeight = FontWeight.Medium,
+                fontFamily = AppFontFamily,
+                fontWeight = FontWeight.Normal,
                 fontSize = 14.sp,
                 lineHeight = 20.sp,
             ),
         labelLarge =
             TextStyle(
-                fontFamily = InterFontFamily,
+                fontFamily = AppFontFamily,
                 fontWeight = FontWeight.Medium,
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
             ),
         labelMedium =
             TextStyle(
-                fontFamily = InterFontFamily,
+                fontFamily = AppFontFamily,
                 fontWeight = FontWeight.Medium,
                 fontSize = 14.sp,
                 lineHeight = 20.sp,
             ),
         labelSmall =
             TextStyle(
-                fontFamily = InterFontFamily,
+                fontFamily = AppFontFamily,
                 fontWeight = FontWeight.Medium,
                 fontSize = 14.sp,
                 lineHeight = 20.sp,

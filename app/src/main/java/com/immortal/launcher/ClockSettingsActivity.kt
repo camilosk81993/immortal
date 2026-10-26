@@ -109,7 +109,7 @@ private fun ClockSettingsScreen() {
                     true
                   } else false
                 }
-                .background(Color(0xFF101012))
+                .background(Color(0xFF031716))
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 28.dp, vertical = 32.dp),
     ) {
@@ -117,7 +117,7 @@ private fun ClockSettingsScreen() {
         Text("Clock", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.SemiBold)
         Text(
             "Choose the digital clock and how it looks on the screensaver.",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 16.sp,
             modifier = Modifier.padding(top = 6.dp),
         )
@@ -145,7 +145,7 @@ private fun ClockSettingsScreen() {
               Text("Preview", color = Color.White, fontSize = 17.sp)
               Text(
                   "See the clock full-screen with your current settings.",
-                  color = Color(0xFF9A9A9A),
+                  color = Color(0xFF9DB5BA),
                   fontSize = 13.sp,
                   modifier = Modifier.padding(top = 2.dp),
               )
@@ -171,7 +171,7 @@ private fun ClockSettingsScreen() {
 
         Text(
             "Changes apply immediately. Tap the clock icon on the home screen to start the screensaver.",
-            color = Color(0xFF7C7C7C),
+            color = Color(0xFF7F9A9F),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
         )

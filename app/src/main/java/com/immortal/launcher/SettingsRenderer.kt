@@ -140,7 +140,7 @@ private fun HelpText(help: String?) {
   if (help.isNullOrBlank()) return
   Text(
       help,
-      color = Color(0xFF9A9A9A),
+      color = Color(0xFF9DB5BA),
       fontSize = 13.sp,
       modifier = Modifier.padding(start = 18.dp, end = 18.dp, bottom = 14.dp),
   )

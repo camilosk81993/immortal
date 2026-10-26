@@ -127,7 +127,7 @@ private fun ScreensaverSourcesScreen() {
                   true
                 } else false
               }
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
@@ -135,7 +135,7 @@ private fun ScreensaverSourcesScreen() {
       Text("Photo source", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.SemiBold)
       Text(
           "Choose where your screensaver photos come from.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -156,12 +156,12 @@ private fun ScreensaverSourcesScreen() {
             Text(
                 "Pair the phone remote, then enter Immich keys, NAS details, a link, or the " +
                     "calendar from another device on your Wi-Fi.",
-                color = Color(0xFF9A9A9A),
+                color = Color(0xFF9DB5BA),
                 fontSize = 13.sp,
                 modifier = Modifier.padding(top = 2.dp),
             )
           }
-          Text("  ›", color = Color(0xFF7C7C7C), fontSize = 20.sp)
+          Text("  ›", color = Color(0xFF7F9A9F), fontSize = 20.sp)
         }
       }
 
@@ -216,7 +216,7 @@ private fun ScreensaverSourcesScreen() {
       Text(
           "Self-hosted sources — pull from your own server or NAS, or point the screensaver at a " +
               "web frame like Immich Kiosk. These are on your local network.",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 0.dp, bottom = 8.dp, start = 4.dp, end = 4.dp),
       )
@@ -260,7 +260,7 @@ private fun ScreensaverSourcesScreen() {
       Text(
           "If a source can't be read (server offline, drive unplugged), Immortal falls back to " +
               "its built-in photos so the frame is never blank.",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
       )
@@ -335,7 +335,7 @@ private fun shortUrl(url: String): String {
 private fun TextButtonRow(label: String, onClick: () -> Unit) {
   Text(
       label,
-      color = Color(0xFF8AB4F8),
+      color = Color(0xFF6BA3BE),
       fontSize = 16.sp,
       modifier = Modifier.fillMaxWidth().tvFocusableRow { onClick() }.padding(18.dp),
   )
@@ -365,7 +365,7 @@ private fun AlbumRefreshStepper(minutes: Int, onChange: (Int) -> Unit) {
                 } else false
               }
               .focusable(interactionSource = src)
-              .background(if (focused) Color(0x402E6BE6) else Color.Transparent)
+              .background(if (focused) Color(0x400C969C) else Color.Transparent)
               .padding(start = 18.dp, end = 6.dp, top = 6.dp, bottom = 6.dp),
       verticalAlignment = Alignment.CenterVertically,
   ) {
@@ -373,7 +373,7 @@ private fun AlbumRefreshStepper(minutes: Int, onChange: (Int) -> Unit) {
     ArrowButton("◀", focused) { onChange(prevAlbumRefreshStep(minutes)) }
     Text(
         formatRefreshMinutes(minutes),
-        color = if (focused) Color.White else Color(0xFFDDDDDD),
+        color = if (focused) Color.White else Color(0xFFDCEBEC),
         fontSize = 17.sp,
         fontWeight = FontWeight.SemiBold,
         textAlign = TextAlign.Center,

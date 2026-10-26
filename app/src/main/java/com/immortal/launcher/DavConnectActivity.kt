@@ -98,7 +98,7 @@ private fun DavConnectScreen(onDone: () -> Unit) {
   Column(
       modifier =
           Modifier.fillMaxSize()
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
@@ -110,7 +110,7 @@ private fun DavConnectScreen(onDone: () -> Unit) {
         Text(
             "Connected — found $count photo${if (count == 1) "" else "s"}. Showing them on the " +
                 "screensaver now.",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 16.sp,
             modifier = Modifier.padding(top = 6.dp),
         )
@@ -122,7 +122,7 @@ private fun DavConnectScreen(onDone: () -> Unit) {
       Text(
           "Show photos from a WebDAV folder — a NAS WebDAV share or Nextcloud. Paste the full " +
               "folder URL, and a username and password if the server needs them.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -149,7 +149,7 @@ private fun DavConnectScreen(onDone: () -> Unit) {
       }
       Spacer(Modifier.heightIn(min = 12.dp))
       Surface(
-          color = Color(0xFF1C1C1E),
+          color = Color(0xFF032F30),
           shape = RoundedCornerShape(16.dp),
           modifier =
               Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {
@@ -158,7 +158,7 @@ private fun DavConnectScreen(onDone: () -> Unit) {
       ) {
         Text(
             "Cancel",
-            color = Color(0xFFDDDDDD),
+            color = Color(0xFFDCEBEC),
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(vertical = 14.dp).fillMaxWidth(),
@@ -179,7 +179,7 @@ private fun Field(
   OutlinedTextField(
       value = value,
       onValueChange = onChange,
-      placeholder = { Text(placeholder, color = Color(0xFF777777)) },
+      placeholder = { Text(placeholder, color = Color(0xFF7B9599)) },
       singleLine = true,
       visualTransformation = if (password) PasswordVisualTransformation() else VisualTransformation.None,
       modifier = modifier.fillMaxWidth().heightIn(min = 56.dp),
@@ -190,7 +190,7 @@ private fun Field(
 @Composable
 private fun PrimaryButton(label: String, enabled: Boolean = true, onClick: () -> Unit) {
   Surface(
-      color = if (enabled) Color(0xFF2E6BE6) else Color(0xFF2A2A2C),
+      color = if (enabled) Color(0xFF0C969C) else Color(0xFF0A3B3D),
       shape = RoundedCornerShape(16.dp),
       modifier =
           Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {

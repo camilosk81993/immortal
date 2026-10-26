@@ -122,7 +122,7 @@ private fun WelcomeSettingsScreen() {
                     true
                   } else false
                 }
-                .background(Color(0xFF101012))
+                .background(Color(0xFF031716))
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 28.dp, vertical = 32.dp),
     ) {
@@ -130,7 +130,7 @@ private fun WelcomeSettingsScreen() {
         Text("Welcome Overlay", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.SemiBold)
         Text(
             "Customize the greeting shown when the screensaver wakes up.",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 16.sp,
             modifier = Modifier.padding(top = 6.dp),
         )
@@ -178,7 +178,7 @@ private fun WelcomeSettingsScreen() {
         Text(
             "Voice for the spoken greeting, from the voices installed on this device. " +
                 "Tap Test to hear it. (Enable \"Speak greeting\" above for it to play on wake.)",
-            color = Color(0xFF7C7C7C),
+            color = Color(0xFF7F9A9F),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
         )
@@ -225,7 +225,7 @@ private fun WelcomeSettingsScreen() {
         }
         Text(
             "How long the welcome overlay displays before auto-dismissing.",
-            color = Color(0xFF7C7C7C),
+            color = Color(0xFF7F9A9F),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
         )
@@ -265,7 +265,7 @@ private fun WelcomeSettingsScreen() {
         }
         Text(
             "Background darkness behind the welcome text (0% = transparent, 100% = opaque).",
-            color = Color(0xFF7C7C7C),
+            color = Color(0xFF7F9A9F),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
         )
@@ -296,7 +296,7 @@ private fun WelcomeSettingsScreen() {
         Text(
             "Tip: The welcome overlay appears when the screensaver starts from sleep. " +
                 "Tap anywhere on the overlay to dismiss it early, or wait for it to auto-fade.",
-            color = Color(0xFF7C7C7C),
+            color = Color(0xFF7F9A9F),
             fontSize = 13.sp,
             modifier = Modifier.padding(start = 4.dp, end = 4.dp),
         )
@@ -424,8 +424,8 @@ private fun EditableTextRow(label: String, value: String, onChange: (String) -> 
           colors = TextFieldDefaults.colors(
               focusedTextColor = Color.White,
               unfocusedTextColor = Color.White,
-              focusedContainerColor = Color(0xFF2A2A2C),
-              unfocusedContainerColor = Color(0xFF2A2A2C),
+              focusedContainerColor = Color(0xFF0A3B3D),
+              unfocusedContainerColor = Color(0xFF0A3B3D),
           ),
       )
       Spacer(Modifier.width(8.dp))
@@ -433,12 +433,12 @@ private fun EditableTextRow(label: String, value: String, onChange: (String) -> 
         onChange(tempValue)
         editing = false
       }) {
-        Text("Save", color = Color(0xFF8AB4F8))
+        Text("Save", color = Color(0xFF6BA3BE))
       }
     } else {
       Text(
           value,
-          color = Color(0xFFDDDDDD),
+          color = Color(0xFFDCEBEC),
           fontSize = 15.sp,
           modifier = Modifier.padding(start = 8.dp),
       )
@@ -463,7 +463,7 @@ private fun DurationStepper(seconds: Int, onChange: (Int) -> Unit) {
                 } else false
               }
               .focusable(interactionSource = src)
-              .background(if (focused) Color(0x402E6BE6) else Color.Transparent)
+              .background(if (focused) Color(0x400C969C) else Color.Transparent)
               .padding(start = 18.dp, end = 6.dp, top = 6.dp, bottom = 6.dp),
       verticalAlignment = Alignment.CenterVertically,
   ) {
@@ -471,7 +471,7 @@ private fun DurationStepper(seconds: Int, onChange: (Int) -> Unit) {
     ArrowButton("◀", focused) { onChange(seconds - 1) }
     Text(
         "${seconds}s",
-        color = if (focused) Color.White else Color(0xFFDDDDDD),
+        color = if (focused) Color.White else Color(0xFFDCEBEC),
         fontSize = 17.sp,
         fontWeight = FontWeight.SemiBold,
         textAlign = TextAlign.Center,
@@ -498,7 +498,7 @@ private fun SizeStepper(label: String, size: Float, onChange: (Float) -> Unit) {
                 } else false
               }
               .focusable(interactionSource = src)
-              .background(if (focused) Color(0x402E6BE6) else Color.Transparent)
+              .background(if (focused) Color(0x400C969C) else Color.Transparent)
               .padding(start = 18.dp, end = 6.dp, top = 6.dp, bottom = 6.dp),
       verticalAlignment = Alignment.CenterVertically,
   ) {
@@ -506,7 +506,7 @@ private fun SizeStepper(label: String, size: Float, onChange: (Float) -> Unit) {
     ArrowButton("◀", focused) { onChange(size - 2) }
     Text(
         "${size.toInt()}sp",
-        color = if (focused) Color.White else Color(0xFFDDDDDD),
+        color = if (focused) Color.White else Color(0xFFDCEBEC),
         fontSize = 17.sp,
         fontWeight = FontWeight.SemiBold,
         textAlign = TextAlign.Center,
@@ -534,7 +534,7 @@ private fun OpacityStepper(opacity: Float, onChange: (Float) -> Unit) {
                 } else false
               }
               .focusable(interactionSource = src)
-              .background(if (focused) Color(0x402E6BE6) else Color.Transparent)
+              .background(if (focused) Color(0x400C969C) else Color.Transparent)
               .padding(start = 18.dp, end = 6.dp, top = 6.dp, bottom = 6.dp),
       verticalAlignment = Alignment.CenterVertically,
   ) {
@@ -542,7 +542,7 @@ private fun OpacityStepper(opacity: Float, onChange: (Float) -> Unit) {
     ArrowButton("◀", focused) { onChange(opacity - 0.05f) }
     Text(
         "$percent%",
-        color = if (focused) Color.White else Color(0xFFDDDDDD),
+        color = if (focused) Color.White else Color(0xFFDCEBEC),
         fontSize = 17.sp,
         fontWeight = FontWeight.SemiBold,
         textAlign = TextAlign.Center,

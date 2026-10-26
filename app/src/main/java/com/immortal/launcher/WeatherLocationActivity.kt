@@ -86,7 +86,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
   Column(
       modifier =
           Modifier.fillMaxSize()
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
@@ -101,7 +101,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
           "Used for the weather, forecast, sunrise & sunset times, and ISS passes. " +
               "Automatic detection uses your internet connection, which can be off by a city " +
               "or two — search for your city below to pin it.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -110,7 +110,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
 
       Text(
           "Current: $currentLabel",
-          color = Color(0xFFBBBBBB),
+          color = Color(0xFFBFD3DC),
           fontSize = 15.sp,
           fontWeight = FontWeight.SemiBold,
           modifier = Modifier.padding(start = 4.dp),
@@ -121,7 +121,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
       OutlinedTextField(
           value = query,
           onValueChange = { query = it },
-          placeholder = { Text("City name, e.g. Boston", color = Color(0xFF777777)) },
+          placeholder = { Text("City name, e.g. Boston", color = Color(0xFF7B9599)) },
           singleLine = true,
           modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp),
           shape = RoundedCornerShape(14.dp),
@@ -130,7 +130,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
       Spacer(Modifier.heightIn(min = 12.dp))
 
       Surface(
-          color = if (query.trim().isNotEmpty()) Color(0xFF2E6BE6) else Color(0xFF2A2A2C),
+          color = if (query.trim().isNotEmpty()) Color(0xFF0C969C) else Color(0xFF0A3B3D),
           shape = RoundedCornerShape(16.dp),
           modifier =
               Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {
@@ -139,7 +139,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
       ) {
         Text(
             if (searching) "Searching…" else "Search",
-            color = if (query.trim().isNotEmpty()) Color.White else Color(0xFF777777),
+            color = if (query.trim().isNotEmpty()) Color.White else Color(0xFF7B9599),
             fontSize = 18.sp,
             fontWeight = FontWeight.SemiBold,
             textAlign = TextAlign.Center,
@@ -159,7 +159,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
       results.forEach { place ->
         Spacer(Modifier.heightIn(min = 10.dp))
         Surface(
-            color = Color(0xFF1C1C1E),
+            color = Color(0xFF032F30),
             shape = RoundedCornerShape(16.dp),
             modifier =
                 Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {
@@ -179,7 +179,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
       Spacer(Modifier.heightIn(min = 26.dp))
 
       Surface(
-          color = Color(0xFF1C1C1E),
+          color = Color(0xFF032F30),
           shape = RoundedCornerShape(16.dp),
           modifier =
               Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {
@@ -199,7 +199,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
       ) {
         Text(
             "Detect automatically instead",
-            color = Color(0xFFDDDDDD),
+            color = Color(0xFFDCEBEC),
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(vertical = 14.dp).fillMaxWidth(),
@@ -209,7 +209,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
       Spacer(Modifier.heightIn(min = 12.dp))
 
       Surface(
-          color = Color(0xFF1C1C1E),
+          color = Color(0xFF032F30),
           shape = RoundedCornerShape(16.dp),
           modifier =
               Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {
@@ -218,7 +218,7 @@ private fun WeatherLocationScreen(onDone: () -> Unit) {
       ) {
         Text(
             "Done",
-            color = Color(0xFFDDDDDD),
+            color = Color(0xFFDCEBEC),
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(vertical = 14.dp).fillMaxWidth(),

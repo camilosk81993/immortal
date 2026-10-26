@@ -77,7 +77,7 @@ private fun CountdownSettingsScreen() {
     Column(
         modifier =
             Modifier.fillMaxSize()
-                .background(Color(0xFF111111))
+                .background(Color(0xFF031716))
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp, vertical = 28.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -86,7 +86,7 @@ private fun CountdownSettingsScreen() {
       Text("Countdowns", color = Color.White, fontSize = 30.sp, fontWeight = FontWeight.Bold)
       Text(
           "Pin a chip on the home screen counting down to a birthday, trip, or holiday.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 15.sp,
           textAlign = TextAlign.Center,
       )
@@ -110,7 +110,7 @@ private fun CountdownSettingsScreen() {
                   Text(
                       "${String.format("%02d.%02d", e.day, e.month)}" +
                           (if (e.year > 0) ".${e.year}" else " · yearly") + " — ${e.phrase()}",
-                      color = Color(0xFF9A9A9A),
+                      color = Color(0xFF9DB5BA),
                       fontSize = 13.sp,
                   )
                 }
@@ -214,7 +214,7 @@ private fun Stepper(label: String, value: Int, onChange: (Int) -> Unit) {
   Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
     Text(label, color = Color.White, fontSize = 17.sp, modifier = Modifier.weight(1f))
     Box(modifier = Modifier.size(48.dp).clickable { onChange(value - 1) }, contentAlignment = Alignment.Center) {
-      Text("◀", color = Color(0xFFDDDDDD), fontSize = 20.sp)
+      Text("◀", color = Color(0xFFDCEBEC), fontSize = 20.sp)
     }
     Text(
         "$value",
@@ -225,7 +225,7 @@ private fun Stepper(label: String, value: Int, onChange: (Int) -> Unit) {
         modifier = Modifier.widthIn(min = 56.dp),
     )
     Box(modifier = Modifier.size(48.dp).clickable { onChange(value + 1) }, contentAlignment = Alignment.Center) {
-      Text("▶", color = Color(0xFFDDDDDD), fontSize = 20.sp)
+      Text("▶", color = Color(0xFFDCEBEC), fontSize = 20.sp)
     }
   }
 }

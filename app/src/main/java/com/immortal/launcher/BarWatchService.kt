@@ -28,6 +28,7 @@ class BarWatchService : AccessibilityService() {
 
   override fun onServiceConnected() {
     QuickBar.attach(this) // host the cluster as a TYPE_ACCESSIBILITY_OVERLAY (renders on the bar)
+    NavPill.attach(this) // botones Atras / Inicio siempre visibles sobre las apps
     RemoteInput.register(this) // let the phone-remote routes drive input through us
     RemoteCursor.attach(this) // host the remote touchpad's on-TV pointer overlay
     NotificationOverlay.attach(this) // host MQTT-notify toasts (see MqttPublisher.handleNotify)
@@ -40,6 +41,7 @@ class BarWatchService : AccessibilityService() {
 
   override fun onUnbind(intent: android.content.Intent?): Boolean {
     QuickBar.detach()
+    NavPill.detach()
     RemoteInput.unregister()
     RemoteCursor.detach()
     NotificationOverlay.detach()
@@ -61,5 +63,12 @@ class BarWatchService : AccessibilityService() {
           r.top <= 0 && r.width() >= dm.widthPixels / 2 && r.height() in 1..(dm.heightPixels / 4)
         }
     QuickBar.setBarVisible(barShown)
+
+    // App al frente: los botones Atras/Inicio se ocultan en las pantallas de Immortal.
+    // Si en este instante la ventana activa es la barra del sistema, se conserva el ultimo valor.
+    val root = ws.firstOrNull { it.type == AccessibilityWindowInfo.TYPE_APPLICATION && it.isActive }?.root
+    val fg = root?.packageName?.toString()
+    runCatching { root?.recycle() }
+    if (fg != null) NavPill.setForeground(fg)
   }
 }

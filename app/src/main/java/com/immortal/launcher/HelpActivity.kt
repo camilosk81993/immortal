@@ -306,7 +306,7 @@ private fun PageContent(p: HelpPage) {
     )
     if (p.linkLabel != null && p.linkUrl != null) {
       Spacer(Modifier.height(24.dp))
-      PillButton(label = p.linkLabel, filled = false, accent = Color(0xFF8AB4F8)) {
+      PillButton(label = p.linkLabel, filled = false, accent = Color(0xFF6BA3BE)) {
         runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(p.linkUrl))) }
       }
     }
@@ -317,7 +317,7 @@ private fun PageContent(p: HelpPage) {
 private fun PillButton(
     label: String,
     filled: Boolean,
-    accent: Color = Color(0xFF2E6BE6),
+    accent: Color = Color(0xFF0C969C),
     focusRequester: FocusRequester? = null,
     onClick: () -> Unit,
 ) {

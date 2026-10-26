@@ -104,7 +104,7 @@ private fun ToolsScreen(onExit: () -> Unit, onOpen: (ToolPage) -> Unit) {
                   true
                 } else false
               }
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
@@ -112,7 +112,7 @@ private fun ToolsScreen(onExit: () -> Unit, onOpen: (ToolPage) -> Unit) {
       Text("Tools", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.SemiBold)
       Text(
           "Extra utilities for your Portal.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -154,11 +154,11 @@ private fun ToolRow(title: String, subtitle: String, onOpen: () -> Unit) {
       Text(title, color = Color.White, fontSize = 17.sp)
       Text(
           subtitle,
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 2.dp),
       )
     }
-    Text("›", color = Color(0xFF7C7C7C), fontSize = 26.sp)
+    Text("›", color = Color(0xFF7F9A9F), fontSize = 26.sp)
   }
 }

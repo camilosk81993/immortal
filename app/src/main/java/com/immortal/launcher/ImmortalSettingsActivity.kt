@@ -134,7 +134,7 @@ private fun ImmortalSettingsScreen() {
                   true
                 } else false
               }
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
@@ -142,7 +142,7 @@ private fun ImmortalSettingsScreen() {
       Text("Immortal", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.SemiBold)
       Text(
           "Tune how the launcher looks and what it shows.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -174,12 +174,12 @@ private fun ImmortalSettingsScreen() {
             Text("World clock locations", color = Color.White, fontSize = 17.sp)
             Text(
                 "Pick which cities the World Clock widget shows (first four are displayed).",
-                color = Color(0xFF9A9A9A),
+                color = Color(0xFF9DB5BA),
                 fontSize = 13.sp,
                 modifier = Modifier.padding(top = 2.dp),
             )
           }
-          Text("›", color = Color(0xFF7C7C7C), fontSize = 26.sp)
+          Text("›", color = Color(0xFF7F9A9F), fontSize = 26.sp)
         }
       }
 
@@ -228,7 +228,7 @@ private fun ImmortalSettingsScreen() {
 
       Text(
           "Changes apply as soon as you go back to the home screen.",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
       )
@@ -259,12 +259,12 @@ private fun MultiRoomNavRow(onOpen: () -> Unit) {
         Text(
             if (ImmortalSettings.multiRoomEnabled(context)) MultiRoomStatus.text.ifBlank { "On" }
             else "Off",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 2.dp),
         )
       }
-      Text("›", color = Color(0xFF7C7C7C), fontSize = 26.sp)
+      Text("›", color = Color(0xFF7F9A9F), fontSize = 26.sp)
     }
   }
 }
@@ -281,12 +281,12 @@ private fun MultiRoomStep(n: String, text: String) {
   Row(modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
     Text(
         "$n.",
-        color = Color(0xFF8AB4F8),
+        color = Color(0xFF6BA3BE),
         fontSize = 14.sp,
         fontWeight = FontWeight.SemiBold,
         modifier = Modifier.padding(end = 10.dp),
     )
-    Text(text, color = Color(0xFFB8B8B8), fontSize = 14.sp, lineHeight = 20.sp)
+    Text(text, color = Color(0xFFBFD3DC), fontSize = 14.sp, lineHeight = 20.sp)
   }
 }
 
@@ -317,13 +317,13 @@ internal fun MultiRoomScreen(onBack: () -> Unit) {
                   true
                 } else false
               }
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
     Column(modifier = Modifier.widthIn(max = 1100.dp).focusGroup()) {
       Surface(
-          color = Color(0xFF1C1C1E),
+          color = Color(0xFF032F30),
           shape = RoundedCornerShape(12.dp),
           modifier =
               Modifier.focusRequester(firstFocus).tvFocusable(RoundedCornerShape(12.dp)) { onBack() },
@@ -344,7 +344,7 @@ internal fun MultiRoomScreen(onBack: () -> Unit) {
           fontWeight = FontWeight.SemiBold)
       Text(
           "Show the Snapcast group's track on the now-playing card, with play/pause/skip.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -354,7 +354,7 @@ internal fun MultiRoomScreen(onBack: () -> Unit) {
           Text("Setting it up", color = Color.White, fontSize = 17.sp)
           Text(
               "Group your Portals into one perfectly in-sync speaker system:",
-              color = Color(0xFF9A9A9A),
+              color = Color(0xFF9DB5BA),
               fontSize = 13.sp,
               modifier = Modifier.padding(top = 4.dp, bottom = 2.dp),
           )
@@ -381,7 +381,7 @@ internal fun MultiRoomScreen(onBack: () -> Unit) {
             Text(
                 "Surfaces the Snapcast group's track on the now-playing card — even when the " +
                     "Music Assistant app isn't open on this Portal.",
-                color = Color(0xFF9A9A9A),
+                color = Color(0xFF9DB5BA),
                 fontSize = 13.sp,
                 modifier = Modifier.padding(top = 2.dp),
             )
@@ -416,7 +416,7 @@ internal fun MultiRoomScreen(onBack: () -> Unit) {
                 modifier = Modifier.weight(1f),
             )
             Surface(
-                color = Color(0xFF2E6BE6),
+                color = Color(0xFF0C969C),
                 shape = RoundedCornerShape(10.dp),
                 modifier =
                     Modifier.padding(start = 12.dp).tvFocusable(RoundedCornerShape(10.dp)) {
@@ -491,7 +491,7 @@ internal fun MultiRoomScreen(onBack: () -> Unit) {
               verticalAlignment = Alignment.CenterVertically,
           ) {
             Surface(
-                color = Color(0xFF2E6BE6),
+                color = Color(0xFF0C969C),
                 shape = RoundedCornerShape(10.dp),
                 modifier =
                     Modifier.tvFocusable(RoundedCornerShape(10.dp)) { MaControl.testLogin(context) },
@@ -517,7 +517,7 @@ internal fun MultiRoomScreen(onBack: () -> Unit) {
               "Sends play/pause/skip to Music Assistant, and shows now-playing for AirPlay " +
                   "sources (which don't carry it over Snapcast). Library/radio now-playing works " +
                   "without it.",
-              color = Color(0xFF7C7C7C),
+              color = Color(0xFF7F9A9F),
               fontSize = 12.sp,
               modifier = Modifier.padding(start = 18.dp, end = 18.dp, top = 8.dp),
           )
@@ -525,7 +525,7 @@ internal fun MultiRoomScreen(onBack: () -> Unit) {
           // Live relay status — gives Apply visible feedback (Connecting… → Connected).
           Text(
               MultiRoomStatus.text.ifBlank { "Starting…" },
-              color = Color(0xFF8AB4F8),
+              color = Color(0xFF6BA3BE),
               fontSize = 13.sp,
               modifier = Modifier.padding(start = 18.dp, end = 18.dp, bottom = 16.dp),
           )
@@ -534,7 +534,7 @@ internal fun MultiRoomScreen(onBack: () -> Unit) {
       Text(
           "Join this Portal to the same Snapcast group as your other rooms, then point it " +
               "at your Music Assistant server. The synced audio is played by the Snapcast app.",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
       )
@@ -564,7 +564,7 @@ private fun QuickButtonsSection() {
   Text(
       "Needs the accessibility-based top-bar watch enabled during setup. The switcher shows your " +
           "recently used apps; tap one to switch.",
-      color = Color(0xFF7C7C7C),
+      color = Color(0xFF7F9A9F),
       fontSize = 13.sp,
       modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
   )
@@ -632,12 +632,12 @@ private fun FeatureSettingsNavRow(
         Text(title, color = Color.White, fontSize = 17.sp)
         Text(
             subtitle,
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 2.dp),
         )
       }
-      Text("›", color = Color(0xFF7C7C7C), fontSize = 26.sp)
+      Text("›", color = Color(0xFF7F9A9F), fontSize = 26.sp)
     }
   }
 }
@@ -660,12 +660,12 @@ private fun MqttNavRow(onOpen: () -> Unit) {
         Text("Home Assistant (MQTT)", color = Color.White, fontSize = 17.sp)
         Text(
             if (MqttConfig.isEnabled(context)) MqttStatus.text.ifBlank { "On" } else "Off",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 2.dp),
         )
       }
-      Text("›", color = Color(0xFF7C7C7C), fontSize = 26.sp)
+      Text("›", color = Color(0xFF7F9A9F), fontSize = 26.sp)
     }
   }
 }
@@ -692,12 +692,12 @@ private fun RemoteNavRow() {
         Text("Control from your phone", color = Color.White, fontSize = 17.sp)
         Text(
             if (RemotePairing.isEnabled(context)) "On — pair a phone as a remote" else "Off",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 2.dp),
         )
       }
-      Text("›", color = Color(0xFF7C7C7C), fontSize = 26.sp)
+      Text("›", color = Color(0xFF7F9A9F), fontSize = 26.sp)
     }
   }
 }
@@ -805,13 +805,13 @@ internal fun MqttScreen(onBack: () -> Unit) {
                   true
                 } else false
               }
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
     Column(modifier = Modifier.widthIn(max = 1100.dp).focusGroup()) {
       Surface(
-          color = Color(0xFF1C1C1E),
+          color = Color(0xFF032F30),
           shape = RoundedCornerShape(12.dp),
           modifier =
               Modifier.focusRequester(firstFocus).tvFocusable(RoundedCornerShape(12.dp)) { onBack() },
@@ -829,7 +829,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
       Text(
           "Publish this Portal to Home Assistant as auto-discovered entities — presence, " +
               "screen, battery, now-playing, and controls — over your MQTT broker.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -859,7 +859,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
             Text("Publish to Home Assistant", color = Color.White, fontSize = 17.sp)
             Text(
                 "Exposes this Portal's state and controls as Home Assistant entities over MQTT.",
-                color = Color(0xFF9A9A9A),
+                color = Color(0xFF9DB5BA),
                 fontSize = 13.sp,
                 modifier = Modifier.padding(top = 2.dp),
             )
@@ -894,7 +894,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
                 modifier = Modifier.weight(1f),
             )
             Surface(
-                color = Color(0xFF2E6BE6),
+                color = Color(0xFF0C969C),
                 shape = RoundedCornerShape(10.dp),
                 modifier =
                     Modifier.padding(start = 12.dp).tvFocusable(RoundedCornerShape(10.dp)) { apply() },
@@ -965,7 +965,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
               Text("Use TLS / SSL", color = Color.White, fontSize = 15.sp)
               Text(
                   "Encrypt the connection (e.g. a broker behind a reverse proxy on port 8883).",
-                  color = Color(0xFF9A9A9A),
+                  color = Color(0xFF9DB5BA),
                   fontSize = 13.sp,
                   modifier = Modifier.padding(top = 2.dp),
               )
@@ -995,7 +995,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
                 Text(
                     "Verify the broker's certificate and hostname. Turn off only for a " +
                         "self-signed broker on a trusted network.",
-                    color = Color(0xFF9A9A9A),
+                    color = Color(0xFF9DB5BA),
                     fontSize = 13.sp,
                     modifier = Modifier.padding(top = 2.dp),
                 )
@@ -1013,7 +1013,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
           // Live connection status — gives Apply visible feedback (Connecting… → Connected).
           Text(
               status.ifBlank { "Starting…" },
-              color = Color(0xFF8AB4F8),
+              color = Color(0xFF6BA3BE),
               fontSize = 13.sp,
               modifier = Modifier.padding(start = 18.dp, end = 18.dp, top = 12.dp, bottom = 16.dp),
           )
@@ -1032,7 +1032,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
               Text(
                   "Publish this Portal's ambient sensors (temperature, light) to Home Assistant. " +
                       "Only sensors this model actually has will appear.",
-                  color = Color(0xFF9A9A9A),
+                  color = Color(0xFF9DB5BA),
                   fontSize = 13.sp,
                   modifier = Modifier.padding(top = 2.dp),
               )
@@ -1063,7 +1063,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
             Text(
                 "Correct the temperature reading. A sensor inside a powered device reads its own " +
                     "heat, so it usually runs a few degrees warm.",
-                color = Color(0xFF7C7C7C),
+                color = Color(0xFF7F9A9F),
                 fontSize = 13.sp,
                 modifier = Modifier.padding(start = 18.dp, end = 18.dp, bottom = 14.dp),
             )
@@ -1082,7 +1082,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
                   "Let Home Assistant use this Portal's camera. Only switchable here - Home " +
                       "Assistant can't turn it on - and a badge stays on screen the whole time " +
                       "the camera is live.",
-                  color = Color(0xFF9A9A9A),
+                  color = Color(0xFF9DB5BA),
                   fontSize = 13.sp,
                   modifier = Modifier.padding(top = 2.dp),
               )
@@ -1107,7 +1107,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
                 Text(
                     "Include sound in the video stream. Muting the microphone silences it, and " +
                         "an intercom announcement takes the microphone back.",
-                    color = Color(0xFF9A9A9A),
+                    color = Color(0xFF9DB5BA),
                     fontSize = 13.sp,
                     modifier = Modifier.padding(top = 2.dp),
                 )
@@ -1137,7 +1137,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
                     "Start the live RTSP stream from here as well as from Home Assistant. " +
                         "Play it at rtsp://127.0.0.1:8554/ on this Portal, or at the Portal's " +
                         "own address from elsewhere. Stops on reboot.",
-                    color = Color(0xFF9A9A9A),
+                    color = Color(0xFF9DB5BA),
                     fontSize = 13.sp,
                     modifier = Modifier.padding(top = 2.dp),
                 )
@@ -1158,7 +1158,7 @@ internal fun MqttScreen(onBack: () -> Unit) {
           "Connects to a broker on your LAN over plain MQTT or TLS. Your Portal shows up in " +
               "Home Assistant automatically as a device with presence, screen, battery, " +
               "now-playing and a few controls — no configuration.yaml editing.",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
       )
@@ -1223,13 +1223,13 @@ internal fun WorldClockScreen(onBack: () -> Unit) {
                   true
                 } else false
               }
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
     Column(modifier = Modifier.widthIn(max = 1100.dp).focusGroup()) {
       Surface(
-          color = Color(0xFF1C1C1E),
+          color = Color(0xFF032F30),
           shape = RoundedCornerShape(12.dp),
           modifier =
               Modifier.focusRequester(firstFocus).tvFocusable(RoundedCornerShape(12.dp)) { onBack() },
@@ -1245,7 +1245,7 @@ internal fun WorldClockScreen(onBack: () -> Unit) {
       Text("World clock", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.SemiBold)
       Text(
           "Choose locations for the World Clock widget. The first four (in the order you pick them) are shown.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -1279,7 +1279,7 @@ internal fun WorldClockScreen(onBack: () -> Unit) {
               Text(custom ?: city, color = Color.White, fontSize = 16.sp)
               Text(
                   if (custom != null) "$city · $zone" else zone,
-                  color = Color(0xFF9A9A9A),
+                  color = Color(0xFF9DB5BA),
                   fontSize = 13.sp,
                   modifier = Modifier.padding(top = 2.dp),
               )
@@ -1287,13 +1287,13 @@ internal fun WorldClockScreen(onBack: () -> Unit) {
             if (on && rank in 0..3) {
               Text(
                   "#${rank + 1}",
-                  color = Color(0xFF8AB4F8),
+                  color = Color(0xFF6BA3BE),
                   fontSize = 14.sp,
                   fontWeight = FontWeight.SemiBold,
                   modifier = Modifier.padding(end = 14.dp),
               )
             } else if (on) {
-              Text("hidden", color = Color(0xFF7C7C7C), fontSize = 13.sp, modifier = Modifier.padding(end = 14.dp))
+              Text("hidden", color = Color(0xFF7F9A9F), fontSize = 13.sp, modifier = Modifier.padding(end = 14.dp))
             }
             Switch(checked = on, onCheckedChange = null)
           }
@@ -1311,11 +1311,11 @@ internal fun WorldClockScreen(onBack: () -> Unit) {
             ) {
               Text(
                   if (custom != null) "Rename (showing \"$custom\")" else "Rename this clock",
-                  color = Color(0xFF8AB4F8),
+                  color = Color(0xFF6BA3BE),
                   fontSize = 14.sp,
                   modifier = Modifier.weight(1f),
               )
-              Text("›", color = Color(0xFF7C7C7C), fontSize = 20.sp)
+              Text("›", color = Color(0xFF7F9A9F), fontSize = 20.sp)
             }
           }
         }
@@ -1335,17 +1335,17 @@ internal fun WorldClockScreen(onBack: () -> Unit) {
             Text("Add any timezone", color = Color.White, fontSize = 16.sp)
             Text(
                 "Search every timezone this Portal knows about",
-                color = Color(0xFF9A9A9A),
+                color = Color(0xFF9DB5BA),
                 fontSize = 13.sp,
                 modifier = Modifier.padding(top = 2.dp),
             )
           }
-          Text("›", color = Color(0xFF7C7C7C), fontSize = 26.sp)
+          Text("›", color = Color(0xFF7F9A9F), fontSize = 26.sp)
         }
       }
       Text(
           "Tip: the widget shows up to four clocks. Re-pick a city to move it to the end of the order.",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
       )
@@ -1393,12 +1393,12 @@ private fun DeviceHealthNavRow(onOpen: () -> Unit) {
         Text(
             if (issues == 0) "All set up"
             else "$issues setting${if (issues == 1) " needs" else "s need"} attention",
-            color = if (issues == 0) Color(0xFF9A9A9A) else Color(0xFFE0A030),
+            color = if (issues == 0) Color(0xFF9DB5BA) else Color(0xFFE0A030),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 2.dp),
         )
       }
-      Text("›", color = Color(0xFF7C7C7C), fontSize = 26.sp)
+      Text("›", color = Color(0xFF7F9A9F), fontSize = 26.sp)
     }
   }
 }
@@ -1427,13 +1427,13 @@ internal fun DeviceHealthScreen(onBack: () -> Unit) {
                   true
                 } else false
               }
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
     Column(modifier = Modifier.widthIn(max = 1100.dp).focusGroup()) {
       Surface(
-          color = Color(0xFF1C1C1E),
+          color = Color(0xFF032F30),
           shape = RoundedCornerShape(12.dp),
           modifier = Modifier.tvFocusable(RoundedCornerShape(12.dp)) { onBack() },
       ) {
@@ -1449,7 +1449,7 @@ internal fun DeviceHealthScreen(onBack: () -> Unit) {
       Text("Device health", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.SemiBold)
       Text(
           "The permissions your Portal was set up with, and what each one powers.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -1485,7 +1485,7 @@ internal fun DeviceHealthScreen(onBack: () -> Unit) {
         Text(
             "Reconnect your Portal to a computer and re-run Immortal setup — it re-grants all of " +
                 "these. (Advanced: re-run provision.sh / provision.ps1 from the provisioning kit.)",
-            color = Color(0xFFB8B8B8),
+            color = Color(0xFFBFD3DC),
             fontSize = 14.sp,
             lineHeight = 20.sp,
             modifier = Modifier.padding(start = 4.dp, end = 4.dp),
@@ -1499,7 +1499,7 @@ internal fun DeviceHealthScreen(onBack: () -> Unit) {
         Spacer(Modifier.size(28.dp))
         Text(
             "Allow uninstall",
-            color = Color(0xFF8A8A8A),
+            color = Color(0xFF8CA6AB),
             fontSize = 13.sp,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.padding(start = 4.dp, bottom = 6.dp),
@@ -1508,7 +1508,7 @@ internal fun DeviceHealthScreen(onBack: () -> Unit) {
             "Disabling the screen-off device admin lets Immortal be uninstalled, but it also stops " +
                 "automatic screen-off (screensaver sleep and the Home Assistant control) until you " +
                 "re-run setup. Only do this if you know what you're doing.",
-            color = Color(0xFF7C7C7C),
+            color = Color(0xFF7F9A9F),
             fontSize = 13.sp,
             modifier = Modifier.padding(start = 4.dp, end = 4.dp, bottom = 10.dp),
         )
@@ -1554,7 +1554,7 @@ private fun HealthRow(c: DevicePermissions.Check) {
       Text(c.title, color = Color.White, fontSize = 17.sp)
       Text(
           c.enables,
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 13.sp,
           lineHeight = 18.sp,
           modifier = Modifier.padding(top = 2.dp),
@@ -1569,7 +1569,7 @@ private fun HealthRow(c: DevicePermissions.Check) {
         )
         Text(
             c.fix,
-            color = Color(0xFF8AB4F8),
+            color = Color(0xFF6BA3BE),
             fontSize = 13.sp,
             lineHeight = 18.sp,
             modifier = Modifier.padding(top = 4.dp),
@@ -1597,17 +1597,17 @@ private fun BootAppsNavRow(count: Int, onOpen: () -> Unit) {
         Text(
             if (count == 0) "None — pick apps that relaunch after a reboot"
             else "$count app${if (count == 1) "" else "s"} relaunch after a reboot",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 13.sp,
             modifier = Modifier.padding(top = 2.dp),
         )
       }
-      Text("›", color = Color(0xFF7C7C7C), fontSize = 26.sp)
+      Text("›", color = Color(0xFF7F9A9F), fontSize = 26.sp)
     }
   }
   Text(
       "Handy for players like Music Assistant that don't restart themselves after a reboot.",
-      color = Color(0xFF7C7C7C),
+      color = Color(0xFF7F9A9F),
       fontSize = 13.sp,
       modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
   )
@@ -1643,13 +1643,13 @@ internal fun BootAppsScreen(
                   true
                 } else false
               }
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
     Column(modifier = Modifier.widthIn(max = 1100.dp).focusGroup()) {
       Surface(
-          color = Color(0xFF1C1C1E),
+          color = Color(0xFF032F30),
           shape = RoundedCornerShape(12.dp),
           modifier =
               Modifier.focusRequester(firstFocus).tvFocusable(RoundedCornerShape(12.dp)) { onBack() },
@@ -1666,7 +1666,7 @@ internal fun BootAppsScreen(
       Text("Start on boot", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.SemiBold)
       Text(
           "Pick which installed apps Immortal relaunches after a reboot.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 16.sp,
           modifier = Modifier.padding(top = 6.dp),
       )
@@ -1677,14 +1677,14 @@ internal fun BootAppsScreen(
         if (list == null) {
           Text(
               "Loading apps…",
-              color = Color(0xFF9A9A9A),
+              color = Color(0xFF9DB5BA),
               fontSize = 14.sp,
               modifier = Modifier.padding(18.dp),
           )
         } else if (list.isEmpty()) {
           Text(
               "No other apps installed yet.",
-              color = Color(0xFF9A9A9A),
+              color = Color(0xFF9DB5BA),
               fontSize = 14.sp,
               modifier = Modifier.padding(18.dp),
           )
@@ -1714,7 +1714,7 @@ internal fun BootAppsScreen(
       Text(
           "These apps relaunch automatically after a reboot — handy for players like Music " +
               "Assistant that don't restart themselves.",
-          color = Color(0xFF7C7C7C),
+          color = Color(0xFF7F9A9F),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 10.dp, start = 4.dp, end = 4.dp),
       )
@@ -1735,7 +1735,7 @@ private fun WallpaperSection() {
       Text("Background", color = Color.White, fontSize = 17.sp)
       Text(
           "A gradient, a photo, or sync with your screensaver (shown blurred). Tap to choose.",
-          color = Color(0xFF9A9A9A),
+          color = Color(0xFF9DB5BA),
           fontSize = 13.sp,
           modifier = Modifier.padding(top = 2.dp),
       )
@@ -1754,7 +1754,7 @@ private fun WallpaperSection() {
           mode = WallpaperConfig.DARK
           WallpaperConfig.setMode(context, mode)
         }) {
-          Spacer(Modifier.fillMaxSize().background(Color(0xFF1A1A1A)))
+          Spacer(Modifier.fillMaxSize().background(Color(0xFF031716)))
         }
         WallpaperConfig.GRADIENTS.forEach { (id, colors) ->
           WallpaperSwatch(id.removePrefix("g_").replaceFirstChar { it.uppercase() }, selected = mode == id, onClick = {
@@ -1819,7 +1819,7 @@ private fun WallpaperSection() {
           Text("Film grain", color = Color.White, fontSize = 17.sp)
           Text(
               "Adds a subtle grain texture over the wallpaper.",
-              color = Color(0xFF9A9A9A),
+              color = Color(0xFF9DB5BA),
               fontSize = 13.sp,
               modifier = Modifier.padding(top = 2.dp),
           )
@@ -1855,7 +1855,7 @@ private fun WallpaperSwatch(
                 .clip(RoundedCornerShape(16.dp))
                 .border(
                     width = if (selected) 3.dp else 1.dp,
-                    color = if (selected) Color(0xFF2E6BE6) else Color(0x33FFFFFF),
+                    color = if (selected) Color(0xFF0C969C) else Color(0x33FFFFFF),
                     shape = RoundedCornerShape(16.dp),
                 ),
     ) {
@@ -1863,7 +1863,7 @@ private fun WallpaperSwatch(
     }
     Text(
         label,
-        color = if (selected) Color.White else Color(0xFFBBBBBB),
+        color = if (selected) Color.White else Color(0xFFBFD3DC),
         fontSize = 12.sp,
         maxLines = 1,
         modifier = Modifier.padding(top = 6.dp),

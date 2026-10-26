@@ -105,7 +105,7 @@ private fun ImmichConnectScreen(onDone: () -> Unit) {
   Column(
       modifier =
           Modifier.fillMaxSize()
-              .background(Color(0xFF101012))
+              .background(Color(0xFF031716))
               .verticalScroll(rememberScrollState())
               .padding(horizontal = 28.dp, vertical = 32.dp),
   ) {
@@ -118,7 +118,7 @@ private fun ImmichConnectScreen(onDone: () -> Unit) {
         Text(
             "Pull photos straight from your self-hosted Immich server. Enter its address and an " +
                 "API key (Immich → Account Settings → API Keys).",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 16.sp,
             modifier = Modifier.padding(top = 6.dp),
         )
@@ -127,7 +127,7 @@ private fun ImmichConnectScreen(onDone: () -> Unit) {
         OutlinedTextField(
             value = url,
             onValueChange = { url = it },
-            placeholder = { Text("http://192.168.1.50:2283", color = Color(0xFF777777)) },
+            placeholder = { Text("http://192.168.1.50:2283", color = Color(0xFF7B9599)) },
             singleLine = true,
             modifier = initialFocus.fillMaxWidth().heightIn(min = 56.dp),
             shape = RoundedCornerShape(14.dp),
@@ -136,7 +136,7 @@ private fun ImmichConnectScreen(onDone: () -> Unit) {
         OutlinedTextField(
             value = key,
             onValueChange = { key = it },
-            placeholder = { Text("API key", color = Color(0xFF777777)) },
+            placeholder = { Text("API key", color = Color(0xFF7B9599)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp),
             shape = RoundedCornerShape(14.dp),
@@ -153,7 +153,7 @@ private fun ImmichConnectScreen(onDone: () -> Unit) {
 
         Spacer(Modifier.heightIn(min = 26.dp))
         Surface(
-            color = if (testing) Color(0xFF2A2A2C) else Color(0xFF2E6BE6),
+            color = if (testing) Color(0xFF0A3B3D) else Color(0xFF0C969C),
             shape = RoundedCornerShape(16.dp),
             modifier =
                 Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) {
@@ -175,13 +175,13 @@ private fun ImmichConnectScreen(onDone: () -> Unit) {
         // --- Step 2: pick an album (or the whole library) ---
         Text(
             "Connected. Choose what to show:",
-            color = Color(0xFF9A9A9A),
+            color = Color(0xFF9DB5BA),
             fontSize = 16.sp,
             modifier = Modifier.padding(top = 6.dp),
         )
         Spacer(Modifier.heightIn(min = 22.dp))
 
-        Surface(color = Color(0xFF1C1C1E), shape = RoundedCornerShape(18.dp), modifier = Modifier.fillMaxWidth()) {
+        Surface(color = Color(0xFF032F30), shape = RoundedCornerShape(18.dp), modifier = Modifier.fillMaxWidth()) {
           Column {
             AlbumRow("Whole library", "All your photos", selectedAlbumId == null) {
               selectedAlbumId = null
@@ -213,7 +213,7 @@ private fun AlbumRow(title: String, subtitle: String, selected: Boolean, onClick
   ) {
     Column(modifier = Modifier.fillMaxWidth().weight(1f)) {
       Text(title, color = Color.White, fontSize = 17.sp)
-      Text(subtitle, color = Color(0xFF9A9A9A), fontSize = 13.sp, modifier = Modifier.padding(top = 2.dp))
+      Text(subtitle, color = Color(0xFF9DB5BA), fontSize = 13.sp, modifier = Modifier.padding(top = 2.dp))
     }
     RadioButton(selected = selected, onClick = null)
   }
@@ -222,14 +222,14 @@ private fun AlbumRow(title: String, subtitle: String, selected: Boolean, onClick
 @Composable
 private fun CancelRow(onDone: () -> Unit) {
   Surface(
-      color = Color(0xFF1C1C1E),
+      color = Color(0xFF032F30),
       shape = RoundedCornerShape(16.dp),
       modifier =
           Modifier.fillMaxWidth().tvFocusable(RoundedCornerShape(16.dp), focusScale = 1f) { onDone() },
   ) {
     Text(
         "Done",
-        color = Color(0xFFDDDDDD),
+        color = Color(0xFFDCEBEC),
         fontSize = 16.sp,
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(vertical = 14.dp).fillMaxWidth(),
