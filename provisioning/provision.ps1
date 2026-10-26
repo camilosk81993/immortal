@@ -267,7 +267,7 @@ function Grant-Perms {
   # Device admin (force-lock only): lets Immortal turn the screen off for its idle and
   # overnight sleep features (and the Home Assistant screen control) via lockNow(). Warn
   # rather than swallow a failure - without it, screen-off silently won't work.
-  if ((A shell dpm set-active-admin "$($cfg["PKG"])/.AdminReceiver") -match "Success") {
+  if ((A shell dpm set-active-admin "$($cfg["PKG"])/com.immortal.launcher.AdminReceiver") -match "Success") {
     Ok "Screen-off (device admin) enabled"
   } else {
     Warn "Couldn't enable screen-off device admin - screensaver sleep and the Home Assistant screen control won't work on this device. Re-run setup; if it keeps failing, check Device health in Immortal settings."
@@ -826,7 +826,7 @@ if ($Restore) {
   # Android refuses to let the shell force-remove a non-test device admin, so this
   # usually fails on a real device - don't claim success when it didn't. The active
   # admin also blocks `adb uninstall` until it's deactivated on-device.
-  $admOut = "$(A shell dpm remove-active-admin "$($cfg["PKG"])/.AdminReceiver" 2>&1)"
+  $admOut = "$(A shell dpm remove-active-admin "$($cfg["PKG"])/com.immortal.launcher.AdminReceiver" 2>&1)"
   if ($admOut -match "success|removed") { Ok "Device admin removed" }
   else {
     Warn "Couldn't remove the device admin from here (Android blocks shell removal of a non-test admin)."

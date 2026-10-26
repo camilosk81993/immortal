@@ -2090,7 +2090,7 @@ private fun PortalHomeTile(onClick: () -> Unit) {
   // reaches calling. Tapping Portal's home button returns to Immortal.
   BuiltInTile(
       label = "Calls",
-      background = Color(0xFF1FA463),
+      background = Color(0xFF0C969C),
       glyph = ICON_CALL,
       onClick = onClick,
   )
@@ -2131,10 +2131,15 @@ private fun BuiltInTile(
   ) {
     Surface(
         color = background,
-        shape = RoundedCornerShape(20.dp),
-        modifier = Modifier.size(tileDp),
+        shape = RoundedCornerShape(24.dp),
+        modifier = Modifier.size(tileDp).border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(24.dp)),
     ) {
       Box(contentAlignment = Alignment.Center) {
+        Box(
+            Modifier.fillMaxSize()
+                .background(
+                    androidx.compose.ui.graphics.Brush.verticalGradient(
+                        listOf(Color(0x33FFFFFF), Color(0x00FFFFFF)))))
         Canvas(Modifier.size(46.dp * (tileDp / 88.dp))) {
           val s = size.minDimension / 24f
           scale(s, s, pivot = Offset.Zero) { drawPath(path, Color.White) }
@@ -2161,9 +2166,12 @@ private fun FolderTile(
       modifier = modifier.fillMaxWidth().padding(4.dp).tvFocusable(RoundedCornerShape(22.dp)) { onClick() },
   ) {
     Surface(
-        color = Color(0xFF3A3A3A),
-        shape = RoundedCornerShape(20.dp),
-        modifier = Modifier.size(tileDp).jiggle(editMode, name.hashCode()),
+        color = Color(0xB3032F30),
+        shape = RoundedCornerShape(24.dp),
+        modifier =
+            Modifier.size(tileDp)
+                .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(24.dp))
+                .jiggle(editMode, name.hashCode()),
     ) {
       Column(
           modifier = Modifier.padding(13.dp * scale),
@@ -2229,7 +2237,7 @@ private fun FolderOverlay(
                   true // consume down+up so the focus system doesn't eat it first
                 } else false
               }
-              .background(Color(0xCC000000))
+              .background(Color(0xCC031716))
               .clickable(interactionSource = noRipple, indication = null) { onDismiss() }
               // Drag an app out of the panel to remove it from the folder.
               .pointerInput(apps) {
@@ -2253,7 +2261,7 @@ private fun FolderOverlay(
               },
   ) {
     Surface(
-        color = Color(0xFF1C1C1E),
+        color = Color(0xFF032F30),
         shape = RoundedCornerShape(28.dp),
         modifier =
             // The panel grows with the tile size (3 columns of LocalTileDp tiles
@@ -2294,7 +2302,7 @@ private fun FolderOverlay(
             item(key = "extra:${extra.label}") {
               BuiltInTile(
                   label = extra.label,
-                  background = Color(0xFF5B6BC0),
+                  background = Color(0xFF274D60),
                   glyph = extra.glyph,
                   onClick = extra.onClick,
               )
@@ -2367,11 +2375,11 @@ private fun NameOverlay(
       contentAlignment = Alignment.TopCenter,
       modifier =
           Modifier.fillMaxSize()
-              .background(Color(0xCC000000))
+              .background(Color(0xCC031716))
               .clickable(interactionSource = noRipple, indication = null) { onCancel() },
   ) {
     Surface(
-        color = Color(0xFF1C1C1E),
+        color = Color(0xFF032F30),
         shape = RoundedCornerShape(24.dp),
         modifier =
             Modifier.padding(top = 70.dp)
@@ -2467,7 +2475,7 @@ private fun UpdatesTile(update: UpdateInfo?, status: String?, onClick: () -> Uni
 private fun StoreTile(onClick: () -> Unit) {
   BuiltInTile(
       label = "App Store",
-      background = Color(0xFF2D6CDF),
+      background = Color(0xFF0A7075),
       glyph = ICON_DOWNLOAD,
       onClick = onClick,
   )
@@ -2477,7 +2485,7 @@ private fun StoreTile(onClick: () -> Unit) {
 private fun ToolsTile(onClick: () -> Unit) {
   BuiltInTile(
       label = "Tools",
-      background = Color(0xFF5A5F6A),
+      background = Color(0xFF3B6F86),
       glyph = ICON_WIDGETS,
       onClick = onClick,
   )
@@ -2901,7 +2909,7 @@ private fun CustomTimerDialog(onStart: (Long) -> Unit, onDismiss: () -> Unit) {
   var minutes by remember { mutableStateOf(5) }
   var seconds by remember { mutableStateOf(0) }
   androidx.compose.ui.window.Dialog(onDismissRequest = onDismiss) {
-    Surface(color = Color(0xFF1C1C1E), shape = RoundedCornerShape(24.dp)) {
+    Surface(color = Color(0xFF032F30), shape = RoundedCornerShape(24.dp)) {
       Column(
           modifier = Modifier.padding(28.dp),
           horizontalAlignment = Alignment.CenterHorizontally,
@@ -3007,7 +3015,7 @@ private fun WidgetPickerOverlay(
               .clickable(interactionSource = noRipple, indication = null) { onDismiss() },
   ) {
     Surface(
-        color = Color(0xFF1C1C1E),
+        color = Color(0xFF032F30),
         shape = RoundedCornerShape(28.dp),
         modifier =
             Modifier.widthIn(max = 920.dp)
@@ -3303,7 +3311,8 @@ private fun AppTile(
           contentDescription = app.label,
           modifier =
               Modifier.size(LocalTileDp.current)
-                  .clip(RoundedCornerShape(20.dp))
+                  .clip(RoundedCornerShape(24.dp))
+                  .border(1.dp, Color(0x33FFFFFF), RoundedCornerShape(24.dp))
                   .alpha(if (dimmed) 0.3f else 1f),
       )
       if (editMode) {

@@ -15,6 +15,7 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val LightColorScheme =
@@ -33,21 +34,25 @@ private val LightColorScheme =
 
 private val DarkColorScheme =
     darkColorScheme(
-        primary = MetaBlue,
-        onPrimary = OnMetaBlue,
-        primaryContainer = MetaBlueDarkCont,
-        onPrimaryContainer = OnMetaBlueDarkC,
-        secondary = NeutralGreyDark,
-        onSecondary = OnMetaBlue,
-        background = BackgroundDark,
-        surface = SurfaceDark,
-        onBackground = ContentOnDark,
-        onSurface = ContentOnDark,
+        primary = Teal500,
+        onPrimary = Teal950,
+        primaryContainer = Teal700,
+        onPrimaryContainer = TealText,
+        secondary = Sky300,
+        onSecondary = Teal950,
+        secondaryContainer = Slate700,
+        onSecondaryContainer = TealText,
+        background = Teal950,
+        surface = Teal900,
+        surfaceVariant = Slate700,
+        onSurfaceVariant = Color(0xFFBFD3DC),
+        onBackground = TealText,
+        onSurface = TealText,
     )
 
 @Composable
 fun SampleAppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = true,
     // Disabled: dynamic color overrides all custom colors and appears over-saturated in MR headsets
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit,

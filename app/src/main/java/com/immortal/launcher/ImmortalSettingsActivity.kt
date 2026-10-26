@@ -1744,6 +1744,12 @@ private fun WallpaperSection() {
           modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
           horizontalArrangement = Arrangement.spacedBy(12.dp),
       ) {
+        WallpaperSwatch("Mi fondo", selected = mode == WallpaperConfig.DEFAULT_MODE, onClick = {
+          mode = WallpaperConfig.DEFAULT_MODE
+          WallpaperConfig.setMode(context, mode)
+        }) {
+          Spacer(Modifier.fillMaxSize().background(Color(0xFF0A7075)))
+        }
         WallpaperSwatch("Dark", selected = mode == WallpaperConfig.DARK, onClick = {
           mode = WallpaperConfig.DARK
           WallpaperConfig.setMode(context, mode)

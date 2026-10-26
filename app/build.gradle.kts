@@ -46,6 +46,12 @@ android {
   }
 
   signingConfigs {
+    create("fork") {
+      storeFile = rootProject.file("ci/portal-fork-key.bin")
+      storePassword = "portal-fork"
+      keyAlias = "fork"
+      keyPassword = "portal-fork"
+    }
     if (keystorePropsFile.exists()) {
       create("release") {
         storeFile = File(keystorePropsFile.parentFile, keystoreProps.getProperty("storeFile"))
@@ -77,6 +83,7 @@ android {
     debug {
       // Lets a debug build install alongside a provisioned release for testing.
       applicationIdSuffix = ".debug"
+      signingConfig = signingConfigs.getByName("fork")
     }
     // Release-faithful iteration build. Same applicationId + same signing key + minify off
     // (inherited from release via initWith), so it provisions identically — home role, device

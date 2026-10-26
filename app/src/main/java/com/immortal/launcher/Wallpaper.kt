@@ -54,8 +54,11 @@ object WallpaperConfig {
   // and the real night sky projected for the device's location. Formerly ForkHome-only.
   const val SKY = "sky"
   const val STARFIELD = "starfield"
+  // Fondo propio, nitido (sin desenfoque). Archivo en assets/wallpapers/.
+  const val SHARP_PREFIX = "sharp:"
+  const val DEFAULT_MODE = SHARP_PREFIX + "fondo.jpg"
 
-  data class Config(val mode: String = DARK, val grain: Boolean = false)
+  data class Config(val mode: String = DEFAULT_MODE, val grain: Boolean = false)
 
   /** Gradient presets: id → top-to-bottom colour stops (ARGB longs). */
   val GRADIENTS: List<Pair<String, List<Long>>> =
@@ -75,13 +78,24 @@ object WallpaperConfig {
           PHOTO_PREFIX + "03_yosemite.jpg" to "Yosemite",
       )
 
+  /** Carga el fondo propio tal cual (sin desenfocar). */
+  fun loadSharp(context: Context, mode: String): Bitmap? =
+      runCatching {
+            context.assets.open("wallpapers/" + mode.removePrefix(SHARP_PREFIX)).use {
+              BitmapFactory.decodeStream(it)
+            }
+          }
+          .getOrNull()
+
   fun gradientColors(mode: String): List<Long>? = GRADIENTS.firstOrNull { it.first == mode }?.second
 
   fun isPhoto(mode: String): Boolean = mode == SCREENSAVER || mode.startsWith(PHOTO_PREFIX)
 
   fun load(context: Context): Config {
     val p = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-    return Config(mode = p.getString(KEY_MODE, DARK) ?: DARK, grain = p.getBoolean(KEY_GRAIN, false))
+    return Config(
+        mode = p.getString(KEY_MODE, DEFAULT_MODE) ?: DEFAULT_MODE,
+        grain = p.getBoolean(KEY_GRAIN, false))
   }
 
   fun setMode(context: Context, mode: String) =
@@ -170,6 +184,29 @@ fun HomeBackground(modifier: Modifier = Modifier) {
       gradient != null -> {
         androidx.compose.foundation.layout.Box(
             Modifier.fillMaxSize().background(Brush.verticalGradient(gradient.map { Color(it) })))
+      }
+      mode.startsWith(WallpaperConfig.SHARP_PREFIX) -> {
+        val sharp by
+            produceState<android.graphics.Bitmap?>(initialValue = null, mode) {
+              value = withContext(Dispatchers.IO) { WallpaperConfig.loadSharp(context, mode) }
+            }
+        val sb = sharp
+        if (sb != null) {
+          Image(
+              bitmap = sb.asImageBitmap(),
+              contentDescription = null,
+              contentScale = ContentScale.Crop,
+              modifier = Modifier.fillMaxSize(),
+          )
+          // Velo suave en tono de la paleta: mantiene legibles los iconos sin tapar la imagen.
+          androidx.compose.foundation.layout.Box(
+              Modifier.fillMaxSize()
+                  .background(
+                      Brush.verticalGradient(
+                          listOf(Color(0x40031716), Color(0x73031716), Color(0xB3031716)))))
+        } else {
+          androidx.compose.foundation.layout.Box(Modifier.fillMaxSize().background(Color(0xFF031716)))
+        }
       }
       WallpaperConfig.isPhoto(mode) -> {
         val bmp by
