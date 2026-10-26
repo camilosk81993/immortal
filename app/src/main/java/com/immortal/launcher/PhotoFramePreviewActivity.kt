@@ -38,6 +38,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 class PhotoFramePreviewActivity : ComponentActivity() {
   private lateinit var frame: PhotoFrameController
   private var powerReceiver: BroadcastReceiver? = null
+  private var ambient: AmbientLayer? = null
 
   // Read from the *latest* intent (onCreate or onNewIntent), never captured in a closure:
   // this activity is singleTask, so a relaunch while the frame is already up reuses the live
@@ -82,7 +83,8 @@ class PhotoFramePreviewActivity : ComponentActivity() {
     // Placed after the overnight-dark early-return above so it never fights the night blanking.
     showOverKeyguard()
 
-    frame = PhotoFrameController(this, showWelcome = intent.getBooleanExtra(EXTRA_SHOW_WELCOME, false))
+    // La bienvenida ahora la dibuja AmbientLayer (con tu fondo), no el overlay original.
+    frame = PhotoFrameController(this, showWelcome = false)
     // Only the screensaver-continuation launch (DreamPolicy's force-wake handoff) honours the
     // "open when dismissed" choice — to the user that frame IS the screensaver, so a tap must
     // behave like PhotoDreamService's tap (issue #146). Deliberate on-demand starts (settings
@@ -123,8 +125,23 @@ class PhotoFramePreviewActivity : ComponentActivity() {
       }
     }
 
-    setContentView(frame.view)
+    if (nightClock) {
+      setContentView(frame.view)
+    } else {
+      val layer =
+          AmbientLayer(this, frame.view) { dim ->
+            window.attributes =
+                window.attributes.apply {
+                  screenBrightness =
+                      if (dim) AMBIENT_DIM_BRIGHTNESS
+                      else WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
+                }
+          }
+      ambient = layer
+      setContentView(layer.view)
+    }
     frame.start()
+    ambient?.start()
 
     if (nightClock) {
       // The clock stays up all window (no idle screen-off); just watch for the window to end.
@@ -195,6 +212,8 @@ class PhotoFramePreviewActivity : ComponentActivity() {
   // Feed all touches to the controller's gesture detector (tap = exit,
   // horizontal swipe = prev/next) at the window level for reliability.
   override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+    // En reposo un toque despierta el marco en vez de salir de el.
+    if (ambient?.consumeTouch(ev) == true) return true
     frame.onTouch(ev)
     return true
   }
@@ -202,6 +221,7 @@ class PhotoFramePreviewActivity : ComponentActivity() {
   override fun onDestroy() {
     powerReceiver?.let { runCatching { unregisterReceiver(it) } }
     nightWatch.removeCallbacks(nightWatchTick)
+    ambient?.stop()
     if (this::frame.isInitialized) frame.stop()
     super.onDestroy()
   }
@@ -221,5 +241,8 @@ class PhotoFramePreviewActivity : ComponentActivity() {
 
     // A soft glow for the overnight bedside clock — dim but still legible in a dark room.
     const val NIGHT_BRIGHTNESS = 0.08f
+
+    // Brillo del reloj de reposo (cuando no hay nadie cerca).
+    const val AMBIENT_DIM_BRIGHTNESS = 0.03f
   }
 }

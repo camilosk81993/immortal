@@ -10,6 +10,7 @@ package com.immortal.launcher
 import android.service.dreams.DreamService
 import android.util.Log
 import android.view.MotionEvent
+import android.view.WindowManager
 
 /**
  * Native photo-frame screensaver. Reproduces the stock Portal idle screen
@@ -22,6 +23,7 @@ import android.view.MotionEvent
  */
 class PhotoDreamService : DreamService() {
   private lateinit var frame: PhotoFrameController
+  private lateinit var ambient: AmbientLayer
 
   override fun onAttachedToWindow() {
     super.onAttachedToWindow()
@@ -51,8 +53,10 @@ class PhotoDreamService : DreamService() {
       frame.onTouch(ev)
       true
     }
-    setContentView(root)
+    ambient = AmbientLayer(this, root) { dim -> setWindowDim(dim) }
+    setContentView(ambient.view)
     frame.start()
+    ambient.start()
   }
 
   override fun onDreamingStarted() {
@@ -74,8 +78,20 @@ class PhotoDreamService : DreamService() {
 
   override fun onDetachedFromWindow() {
     Log.i(TAG, "detached: dream ending")
+    if (this::ambient.isInitialized) ambient.stop()
     if (this::frame.isInitialized) frame.stop()
     super.onDetachedFromWindow()
+  }
+
+  /** Brillo muy bajo mientras el reloj de reposo esta visible. */
+  private fun setWindowDim(dim: Boolean) {
+    runCatching {
+      val w = window ?: return
+      w.attributes =
+          w.attributes.apply {
+            screenBrightness = if (dim) 0.03f else WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
+          }
+    }
   }
 
   private companion object {

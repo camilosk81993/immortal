@@ -1406,7 +1406,7 @@ private fun customWidgetLabel(kind: String): String =
     }
 
 /** Saludo informal que cambia con la hora y el dia (sin nombres: lo usa toda la casa). */
-private fun greetingFor(now: Date): String {
+internal fun greetingFor(now: Date): String {
   val cal = java.util.Calendar.getInstance().apply { time = now }
   val h = cal.get(java.util.Calendar.HOUR_OF_DAY)
   val day = cal.get(java.util.Calendar.DAY_OF_YEAR)
